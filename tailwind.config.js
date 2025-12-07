@@ -1,13 +1,7 @@
-import type { Config } from 'tailwindcss';
-
 const defaultTheme = require('tailwindcss/defaultTheme');
 
-const config: Config = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+module.exports = {
+  content: ['./*.php', './**/*.php', './src/**/*.js'],
   darkMode: 'class',
   theme: {
     fontFamily: {
@@ -247,4 +241,3 @@ const config: Config = {
   },
   plugins: [],
 };
-export default config;
