@@ -23,4 +23,4 @@
 
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
-    <div id="page" class="site">
+    <div id="page" class="site border border-2 border-dashed border-blue-500 ">
