@@ -162,16 +162,21 @@ input[type='search']::-webkit-search-results-decoration {
   @apply -mt-0.5;
 }
 
-.hero-carousel .swiper-pagination-bullet {
-  @apply h-1 w-4 rounded-[11px] bg-[#DDD];
-}
-
-.hero-carousel .swiper-pagination-bullet-active {
-  @apply w-5.5 bg-blue;
+/* Swiper Pagination */
+.hero-carousel {
+  @apply relative;
 }
 
 .hero-carousel .swiper-pagination {
-  @apply xl:!bottom-5;
+  @apply !relative !bottom-0 mt-4 xl:!absolute xl:!bottom-5 xl:mt-0;
+}
+
+.hero-carousel .swiper-pagination-bullet {
+  @apply !h-1 !w-4 !rounded-[11px] !bg-[#DDD] !opacity-100 !mx-1;
+}
+
+.hero-carousel .swiper-pagination-bullet-active {
+  @apply !w-5.5 !bg-blue;
 }
 
 .common-carousel .swiper-button-next:after,
