@@ -204,3 +204,38 @@ if ( ! function_exists( 'pokrovce_woocommerce_header_cart' ) ) {
 <?php
 	}
 }
+
+/**
+ * Custom styled breadcrumb for single product.
+ */
+if ( ! function_exists( 'pokrovce_single_product_breadcrumb' ) ) {
+	function pokrovce_single_product_breadcrumb() {
+		if ( ! is_product() ) {
+			return;
+		}
+
+		$product_name = get_the_title();
+		?>
+		<div class="overflow-hidden shadow-breadcrumb pt-[209px] sm:pt-[155px] lg:pt-[95px] xl:pt-[165px]">
+			<div>
+				<div class="w-full px-4 py-5 mx-auto max-w-7xl sm:px-6 xl:px-0 xl:py-10">
+					<div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
+						<h1 class="text-xl font-semibold capitalize text-dark sm:text-2xl xl:text-custom-2"><?php esc_html_e( 'Shop Details', 'pokrovce' ); ?></h1>
+						<ul class="flex items-center gap-2">
+							<li class="text-custom-sm hover:text-blue">
+								<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home /', 'pokrovce' ); ?></a>
+							</li>
+							<li class="text-custom-sm hover:text-blue">
+								<a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"><?php esc_html_e( 'Shop /', 'pokrovce' ); ?></a>
+							</li>
+							<li class="capitalize text-custom-sm text-blue"><?php echo esc_html( $product_name ); ?></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+}
+// Replace default breadcrumb with custom one for single products
+add_action( 'woocommerce_before_main_content', 'pokrovce_single_product_breadcrumb', 5 );

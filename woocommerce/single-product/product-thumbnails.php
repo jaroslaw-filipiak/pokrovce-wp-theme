@@ -28,18 +28,19 @@ if ( ! $product || ! $product instanceof WC_Product ) {
 	return '';
 }
 
-$attachment_ids = $product->get_gallery_image_ids();
+$attachment_ids  = $product->get_gallery_image_ids();
+$main_image_id   = $product->get_image_id();
 
-if ( $attachment_ids && $product->get_image_id() ) {
+// Main image thumbnail (first, active)
+if ( $main_image_id ) {
+	$main_thumb = wp_get_attachment_image( $main_image_id, 'thumbnail' );
+	echo '<button class="product-thumbnail flex items-center justify-center w-15 sm:w-25 h-15 sm:h-25 overflow-hidden rounded-lg bg-gray-2 shadow-1 ease-out duration-200 border-2 hover:border-blue border-blue" data-thumb-id="' . esc_attr( $main_image_id ) . '">' . $main_thumb . '</button>';
+}
+
+// Gallery thumbnails
+if ( $attachment_ids && $main_image_id ) {
 	foreach ( $attachment_ids as $key => $attachment_id ) {
-		/**
-		 * Filter product image thumbnail HTML string.
-		 *
-		 * @since 1.6.4
-		 *
-		 * @param string $html          Product image thumbnail HTML string.
-		 * @param int    $attachment_id Attachment ID.
-		 */
-		echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', wc_get_gallery_image_html( $attachment_id, false, $key ), $attachment_id ); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		$thumb = wp_get_attachment_image( $attachment_id, 'thumbnail' );
+		echo '<button class="product-thumbnail flex items-center justify-center w-15 sm:w-25 h-15 sm:h-25 overflow-hidden rounded-lg bg-gray-2 shadow-1 ease-out duration-200 border-2 hover:border-blue border-transparent" data-thumb-id="' . esc_attr( $attachment_id ) . '">' . $thumb . '</button>';
 	}
 }

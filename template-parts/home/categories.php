@@ -75,3 +75,4 @@ $categories = get_terms( array(
     </div>
 </section>
 
+
