@@ -5,13 +5,14 @@
  * @package pokrovce
  */
 ?>
-<section class="overflow-hidden pb-10 lg:pb-12.5 xl:pb-15 pt-57.5 sm:pt-45 lg:pt-30 xl:pt-51.5 bg-[#E5EAF4]">
+<section class="overflow-hidden pb-10 lg:pb-12.5 xl:pb-15  pt-45 lg:pt-30  bg-[#E5EAF4]">
     <div class="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
         <div class="flex flex-wrap gap-5">
             <div class="xl:max-w-[757px] w-full">
                 <div class="relative z-1 rounded-[10px] bg-white overflow-hidden">
                     <!-- bg shapes -->
-                    <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/hero/hero-bg.png" alt="hero bg shapes" class="absolute right-0 bottom-0 -z-1" width="534" height="520">
+                    <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/hero/hero-bg.png"
+                        alt="hero bg shapes" class="absolute right-0 bottom-0 -z-1" width="534" height="520">
 
                     <?php get_template_part( 'template-parts/home/hero', 'carousel' ); ?>
                 </div>
@@ -36,7 +37,8 @@
                             </div>
 
                             <div>
-                                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/hero/hero-02.png" alt="mobile image" width="123" height="161">
+                                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/hero/hero-02.png"
+                                    alt="mobile image" width="123" height="161">
                             </div>
                         </div>
                     </div>
@@ -58,7 +60,8 @@
                             </div>
 
                             <div>
-                                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/hero/hero-01.png" alt="headphone image" width="123" height="161">
+                                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/hero/hero-01.png"
+                                    alt="headphone image" width="123" height="161">
                             </div>
                         </div>
                     </div>
@@ -69,5 +72,3 @@
 
     <?php get_template_part( 'template-parts/home/hero', 'feature' ); ?>
 </section>
-
-
