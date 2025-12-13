@@ -15,7 +15,7 @@ get_header();
     <?php get_template_part( 'template-parts/home/new-arrivals' );  ?>
     <?php /** get_template_part( 'template-parts/home/promo-banner' ); **/ ?>
     <?php /** get_template_part( 'template-parts/home/best-seller' ); **/ ?>
-    <?php get_template_part( 'template-parts/home/countdown' ); ?>
+    <?php /** get_template_part( 'template-parts/home/countdown' ); **/ ?>
     <?php get_template_part( 'template-parts/home/testimonials' ); ?>
     <?php get_template_part( 'template-parts/home/newsletter' ); ?>
 </main>

@@ -29,7 +29,7 @@ if ( $product->is_in_stock() ) : ?>
 
 <?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
-<form class="cart"
+<form class="cart pt-3"
     action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>"
     method="post" enctype='multipart/form-data'>
     <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
@@ -79,7 +79,7 @@ if ( $product->is_in_stock() ) : ?>
 
         <!-- Wishlist Button -->
         <button type="button" aria-label="<?php esc_attr_e( 'Add to wishlist', 'pokrovce' ); ?>"
-            class="wishlist-btn flex items-center justify-center w-12 h-12 duration-200 ease-out border rounded-full border-gray-3 hover:text-white hover:bg-dark hover:border-transparent">
+            class="wishlist-btn flex items-center justify-center w-12 h-12 duration-200 ease-out border rounded-full border-gray-3 hover:text-white hover:bg-dark hover:border-transparent hidden">
             <svg class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"

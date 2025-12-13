@@ -32,11 +32,11 @@ if ( $product && $product->is_on_sale() ) {
 }
 ?>
 <div class="flex items-center justify-between mb-3">
-	<?php the_title( '<h2 class="product_title entry-title text-xl font-semibold sm:text-2xl xl:text-custom-3 text-dark">', '</h2>' ); ?>
-	<?php if ( $discount_percent > 0 ) : ?>
-		<div class="inline-flex rounded-full shrink-0 font-medium text-xs text-white bg-blue py-0.5 px-2.5">
-			<?php echo esc_html( $discount_percent ); ?>% <?php esc_html_e( 'OFF', 'pokrovce' ); ?>
-		</div>
-	<?php endif; ?>
+    <?php the_title( '<h2 class="product_title entry-title text-xl font-semibold sm:text-2xl xl:text-custom-3 text-dark">', '</h2>' ); ?>
+    <?php if ( $discount_percent > 0 ) : ?>
+    <div class="inline-flex rounded-full shrink-0 font-medium text-xs text-white bg-[#E67E22] py-0.5 px-2.5">
+        <?php echo esc_html( $discount_percent ); ?>% <?php esc_html_e( 'taniej', 'pokrovce' ); ?>
+    </div>
+    <?php endif; ?>
 </div>
 <?php

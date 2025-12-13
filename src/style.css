@@ -164,7 +164,15 @@ input[type='search']::-webkit-search-results-decoration {
 
 /* Swiper Pagination */
 .hero-carousel {
-  @apply relative;
+  @apply relative h-full;
+}
+
+.hero-carousel .swiper-wrapper {
+  @apply h-full;
+}
+
+.hero-carousel .swiper-slide {
+  height: auto !important;
 }
 
 .hero-carousel .swiper-pagination {
@@ -246,4 +254,27 @@ input[type='search']::-webkit-search-results-decoration {
 
 .range-slider__range {
   @apply !bg-blue;
+}
+
+.wpcf7 .wpcf7-form-control {
+  @apply w-full bg-gray-1 border border-gray-3 outline-none rounded-md placeholder:text-dark-4 py-3 px-5;
+}
+
+.wpcf7
+  .newsletter-fields__container
+  > .newsletter-fields__fields
+  > p:first-of-type {
+  @apply flex items-start justify-end gap-2;
+}
+
+.wpcf7 .wpcf7-submit {
+  @apply bg-[#E67E22] text-white hover:bg-[#E67E22]/80 cursor-pointer border-none w-[150px];
+}
+
+.wpcf7-not-valid-tip {
+  @apply text-white;
+}
+
+.wpcf7 form .wpcf7-response-output {
+  @apply m-0 p-0 border-none text-white pt-4;
 }

@@ -153,3 +153,5 @@ if ( class_exists( 'WooCommerce' ) ) {
  * Enqueue scripts and styles.
  */
 require get_template_directory() . '/inc/enqueue.php';
+
+add_filter('wpcf7_verify_nonce', '__return_false');

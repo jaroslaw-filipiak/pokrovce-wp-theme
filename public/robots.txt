@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /dziekujemy
+Disallow: /platnosc
+
+# Sitemap
+Sitemap: https://pokrovce.pl/sitemap.xml

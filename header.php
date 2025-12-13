@@ -19,6 +19,16 @@
     <link rel="profile" href="https://gmpg.org/xfn/11">
 
     <?php wp_head(); ?>
+
+    <!-- fav + manifest -->
+    <link rel="icon" type="image/png" href="<?php echo get_theme_file_uri() ?>/public/favicon-96x96.png"
+        sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="<?php echo get_theme_file_uri() ?>/public/favicon.svg" />
+    <link rel="shortcut icon" href="<?php echo get_theme_file_uri() ?>/public/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="<?php echo get_theme_file_uri() ?>/public/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="pokrovce.pl" />
+    <link rel="manifest" href="<?php echo get_theme_file_uri() ?>/public/site.webmanifest" />
 </head>
 
 <body <?php body_class(); ?>>
