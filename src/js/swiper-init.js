@@ -81,5 +81,36 @@ document.addEventListener('DOMContentLoaded', function() {
             },
         });
     }
+
+    // Related Products Carousel
+    if (document.querySelector('.related-carousel')) {
+        new Swiper('.related-carousel', {
+            modules: [Navigation],
+            slidesPerView: 4,
+            spaceBetween: 24,
+            navigation: {
+                nextEl: '.related-next',
+                prevEl: '.related-prev',
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                    spaceBetween: 16,
+                },
+                480: {
+                    slidesPerView: 2,
+                    spaceBetween: 16,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 24,
+                },
+            },
+        });
+    }
 });
 

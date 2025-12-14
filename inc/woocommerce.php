@@ -20,8 +20,8 @@ function pokrovce_woocommerce_setup() {
 	add_theme_support(
 		'woocommerce',
 		array(
-			'thumbnail_image_width' => 150,
-			'single_image_width'    => 300,
+			'thumbnail_image_width' => 300,
+			'single_image_width'    => 600,
 			'product_grid'          => array(
 				'default_rows'    => 3,
 				'min_rows'        => 1,
@@ -69,8 +69,8 @@ add_filter( 'body_class', 'pokrovce_woocommerce_active_body_class' );
  */
 function pokrovce_woocommerce_related_products_args( $args ) {
 	$defaults = array(
-		'posts_per_page' => 3,
-		'columns'        => 3,
+		'posts_per_page' => 8,
+		'columns'        => 4,
 	);
 
 	$args = wp_parse_args( $defaults, $args );

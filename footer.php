@@ -71,7 +71,7 @@ $year = date( 'Y' );
                 <!-- Social Links start -->
                 <div class="flex items-center gap-4 mt-7.5">
                     <a href="https://www.facebook.com/people/Pokrovce/61577915450519/" target="_blank"
-                        aria-label="Facebook Social Link" class="flex ease-out duration-200 hover:text-blue">
+                        aria-label="Facebook Social Link" class="flex ease-out duration-200 hover:text-[#E67E22]">
                         <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -80,7 +80,7 @@ $year = date( 'Y' );
                         </svg>
                     </a>
 
-                    <a href="#" aria-label="Twitter Social Link" class="hidden ease-out duration-200 hover:text-blue">
+                    <a href="#" aria-label="Twitter Social Link" class="hidden ease-out duration-200 hover:text-[#E67E22]">
                         <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -89,7 +89,7 @@ $year = date( 'Y' );
                         </svg>
                     </a>
 
-                    <a href="#" aria-label="Instagram Social Link" class="hidden ease-out duration-200 hover:text-blue">
+                    <a href="#" aria-label="Instagram Social Link" class="hidden ease-out duration-200 hover:text-[#E67E22]">
                         <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_footer_instagram)">
@@ -111,7 +111,7 @@ $year = date( 'Y' );
                         </svg>
                     </a>
 
-                    <a href="#" aria-label="Linkedin Social Link" class="hidden ease-out duration-200 hover:text-blue">
+                    <a href="#" aria-label="Linkedin Social Link" class="hidden ease-out duration-200 hover:text-[#E67E22]">
                         <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -131,26 +131,26 @@ $year = date( 'Y' );
                 <ul class="flex flex-col gap-3.5">
                     <?php if ( class_exists( 'WooCommerce' ) ) : ?>
                     <li>
-                        <a class="ease-out duration-200 hover:text-blue"
+                        <a class="ease-out duration-200 hover:text-[#E67E22]"
                             href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>">
                             <?php esc_html_e( 'Moje konto', 'pokrovce' ); ?>
                         </a>
                     </li>
                     <li>
-                        <a class="ease-out duration-200 hover:text-blue"
+                        <a class="ease-out duration-200 hover:text-[#E67E22]"
                             href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>">
                             <?php esc_html_e( 'Logowanie / Rejestracja', 'pokrovce' ); ?>
                         </a>
                     </li>
                     <li>
-                        <a class="ease-out duration-200 hover:text-blue"
+                        <a class="ease-out duration-200 hover:text-[#E67E22]"
                             href="<?php echo esc_url( wc_get_cart_url() ); ?>">
                             <?php esc_html_e( 'Koszyk', 'pokrovce' ); ?>
                         </a>
                     </li>
 
                     <li>
-                        <a class="ease-out duration-200 hover:text-blue"
+                        <a class="ease-out duration-200 hover:text-[#E67E22]"
                             href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ); ?>">
                             <?php esc_html_e( 'Sklep', 'pokrovce' ); ?>
                         </a>
@@ -172,18 +172,18 @@ $year = date( 'Y' );
                         'fallback_cb'    => function() {
                             ?>
                 <ul class="flex flex-col gap-3">
-                    <li><a class="ease-out duration-200 hover:text-blue"
+                    <li><a class="ease-out duration-200 hover:text-[#E67E22]"
                             href="<?php echo esc_url( get_privacy_policy_url() ); ?>"><?php esc_html_e( 'Polityka prywatności', 'pokrovce' ); ?></a>
 
                     </li>
 
-                    <li><a class="ease-out duration-200 hover:text-blue"
+                    <li><a class="ease-out duration-200 hover:text-[#E67E22]"
                             href="#"><?php esc_html_e( 'Regulamin', 'pokrovce' ); ?></a></li>
-                    <li><a class="ease-out duration-200 hover:text-blue"
+                    <li><a class="ease-out duration-200 hover:text-[#E67E22]"
                             href="#"><?php esc_html_e( "FAQ", 'pokrovce' ); ?></a></li>
-                    <li><a class="ease-out duration-200 hover:text-blue"
+                    <li><a class="ease-out duration-200 hover:text-[#E67E22]"
                             href="#"><?php esc_html_e( 'O nas', 'pokrovce' ); ?></a></li>
-                    <li><a class="ease-out duration-200 hover:text-blue"
+                    <li><a class="ease-out duration-200 hover:text-[#E67E22]"
                             href="#"><?php esc_html_e( 'Kontakt', 'pokrovce' ); ?></a></li>
                 </ul>
                 <?php

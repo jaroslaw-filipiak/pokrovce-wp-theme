@@ -33,12 +33,13 @@ if ( post_password_required() ) {
 ?>
 
 <!-- Product Section -->
-<section class="relative pt-5 pb-20 overflow-hidden lg:pt-20 xl:pt-28">
-	<div class="w-full px-4 mx-auto max-w-7xl sm:px-6 xl:px-0">
-		<div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'flex flex-col lg:flex-row gap-7.5 xl:gap-16', $product ); ?>>
+<section class="relative pt-5 pb-20 overflow-hidden lg:pt-20 xl:pt-28 content-single-product">
+    <div class="w-full px-4 mx-auto max-w-7xl sm:px-6 xl:px-0">
+        <div id="product-<?php the_ID(); ?>"
+            <?php wc_product_class( 'flex flex-col lg:flex-row gap-7.5 xl:gap-16', $product ); ?>>
 
-			<div class="w-full lg:w-1/2">
-				<?php
+            <div class="w-full lg:w-1/2 relative">
+                <?php
 				/**
 				 * Hook: woocommerce_before_single_product_summary.
 				 *
@@ -47,10 +48,10 @@ if ( post_password_required() ) {
 				 */
 				do_action( 'woocommerce_before_single_product_summary' );
 				?>
-			</div>
+            </div>
 
-			<div class="summary entry-summary w-full lg:w-1/2">
-				<?php
+            <div class="summary entry-summary w-full lg:w-1/2">
+                <?php
 				/**
 				 * Hook: woocommerce_single_product_summary.
 				 *
@@ -65,10 +66,10 @@ if ( post_password_required() ) {
 				 */
 				do_action( 'woocommerce_single_product_summary' );
 				?>
-			</div>
+            </div>
 
-		</div>
-	</div>
+        </div>
+    </div>
 </section>
 
 <?php

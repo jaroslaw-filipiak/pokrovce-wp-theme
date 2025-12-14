@@ -21,3 +21,101 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
+
+/* Ukryj domyślny przycisk zoom WooCommerce (z emoji 🔍) */
+.woocommerce-product-gallery__trigger {
+  display: none !important;
+}
+
+/* Usuń podkreślenie z ceny (tag <ins>) */
+.price ins {
+  text-decoration: none !important;
+}
+
+/* Zdjęcie produktu - wypełnia kontener jako tło */
+.woocommerce-product-gallery__wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.woocommerce-product-gallery__image {
+  width: 100%;
+  height: 100%;
+}
+
+.woocommerce-product-gallery__image a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.woocommerce-product-gallery__image img.wp-post-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+/* Related products grid */
+.related.products ul.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.related.products ul.products li.product {
+  position: relative;
+}
+
+.related.products ul.products li.product img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.related.products ul.products li.product .woocommerce-loop-product__title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 0.75rem;
+  color: #1C274C;
+}
+
+.related.products ul.products li.product .price {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.related.products ul.products li.product .button {
+  display: inline-flex;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: #1C274C;
+  color: white;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  transition: background 0.2s;
+}
+
+.related.products ul.products li.product .button:hover {
+  background: #E67E22;
+}
+
+@media (max-width: 768px) {
+  .related.products ul.products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .related.products ul.products {
+    grid-template-columns: 1fr;
+  }
+}

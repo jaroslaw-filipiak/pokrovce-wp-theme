@@ -38,7 +38,7 @@ if ( $product->is_in_stock() ) : ?>
         <!-- Quantity Selector -->
         <div class="flex items-center border rounded-full border-gray-3">
             <button type="button" aria-label="<?php esc_attr_e( 'Decrease quantity', 'pokrovce' ); ?>"
-                class="quantity-minus flex items-center justify-center w-12 h-12 duration-200 ease-out hover:text-blue">
+                class="quantity-minus flex items-center justify-center w-12 h-12 duration-200 ease-out hover:text-[#E67E22]">
                 <svg width="16" height="2" viewBox="0 0 16 2" fill="currentColor">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M-8.548e-08 0.977778C-3.82707e-08 0.437766 0.437766 3.82707e-08 0.977778 8.548e-08L15.0222 1.31328e-06C15.5622 1.36049e-06 16 0.437767 16 0.977779C16 1.51779 15.5622 1.95556 15.0222 1.95556L0.977778 1.95556C0.437766 1.95556 -1.32689e-07 1.51779 -8.548e-08 0.977778Z"
@@ -61,7 +61,7 @@ if ( $product->is_in_stock() ) : ?>
 				?>
 
             <button type="button" aria-label="<?php esc_attr_e( 'Increase quantity', 'pokrovce' ); ?>"
-                class="quantity-plus flex items-center justify-center w-12 h-12 duration-200 ease-out hover:text-blue">
+                class="quantity-plus flex items-center justify-center w-12 h-12 duration-200 ease-out hover:text-[#E67E22]">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M8.08889 0C8.6289 2.36047e-08 9.06667 0.437766 9.06667 0.977778L9.06667 15.0222C9.06667 15.5622 8.6289 16 8.08889 16C7.54888 16 7.11111 15.5622 7.11111 15.0222L7.11111 0.977778C7.11111 0.437766 7.54888 -2.36047e-08 8.08889 0Z"
@@ -75,7 +75,7 @@ if ( $product->is_in_stock() ) : ?>
 
         <!-- Add to Cart Button -->
         <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"
-            class="single_add_to_cart_button button alt inline-flex font-medium text-white bg-dark py-3 px-7 rounded-full ease-out duration-200 hover:bg-dark-2<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+            class="single_add_to_cart_button button alt inline-flex font-medium text-white bg-[#E67E22] py-3 px-7 rounded-full ease-out duration-200 hover:bg-[#E67E22]/80<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
 
         <!-- Wishlist Button -->
         <button type="button" aria-label="<?php esc_attr_e( 'Add to wishlist', 'pokrovce' ); ?>"

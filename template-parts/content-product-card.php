@@ -41,7 +41,7 @@ $image_url      = wp_get_attachment_image_url( $product->get_image_id(), 'woocom
             class="absolute left-0 bottom-0 translate-y-full w-full flex items-center justify-center gap-2.5 pb-5 ease-linear duration-200 group-hover:translate-y-0">
             <a href="<?php echo esc_url( $product_link ); ?>"
                 aria-label="<?php esc_attr_e( 'View product', 'pokrovce' ); ?>"
-                class="flex items-center justify-center w-9 h-9 rounded-[5px] shadow-1 ease-out duration-200 text-dark bg-white hover:text-blue">
+                class="flex items-center justify-center w-9 h-9 rounded-[5px] shadow-1 ease-out duration-200 text-[#E67E22] bg-white hover:text-[#E67E22]">
                 <svg class="fill-current" width="16" height="16" viewBox="0 0 16 16" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -64,7 +64,7 @@ $image_url      = wp_get_attachment_image_url( $product->get_image_id(), 'woocom
             <?php if ( function_exists( 'YITH_WCWL' ) ) : ?>
             <a href="<?php echo esc_url( add_query_arg( 'add_to_wishlist', $product_id ) ); ?>"
                 aria-label="<?php esc_attr_e( 'Dodaj do ulubionych', 'pokrovce' ); ?>"
-                class="flex items-center justify-center w-9 h-9 rounded-[5px] shadow-1 ease-out duration-200 text-dark bg-white hover:text-blue">
+                class="flex items-center justify-center w-9 h-9 rounded-[5px] shadow-1 ease-out duration-200 text-dark bg-white hover:text-[#E67E22]">
                 <svg class="fill-current" width="16" height="16" viewBox="0 0 16 16" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -90,7 +90,7 @@ $image_url      = wp_get_attachment_image_url( $product->get_image_id(), 'woocom
         <p class="text-custom-sm">(<?php echo esc_html( $review_count ); ?>)</p>
     </div>
 
-    <h3 class="font-medium text-dark ease-out duration-200 hover:text-blue mb-1.5">
+    <h3 class="font-medium text-dark ease-out duration-200 hover:text-[#E67E22] mb-1.5">
         <a href="<?php echo esc_url( $product_link ); ?>"><?php echo esc_html( $product_title ); ?></a>
     </h3>
 

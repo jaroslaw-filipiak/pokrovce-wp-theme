@@ -63,7 +63,7 @@ $categories = get_terms( array(
                                 <div class="max-w-[130px] w-full h-30 rounded-full flex items-center justify-center bg-gray-1 mb-4">
                                     <img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $category->name ); ?>" class="w-auto">
                                 </div>
-                                <h3 class="text-center font-medium text-custom-sm text-dark ease-out duration-200 group-hover:text-blue">
+                                <h3 class="text-center font-medium text-custom-sm text-dark ease-out duration-200 group-hover:text-[#E67E22]">
                                     <?php echo esc_html( $category->name ); ?>
                                 </h3>
                             </a>
@@ -74,6 +74,8 @@ $categories = get_terms( array(
         </div>
     </div>
 </section>
+
+
 
 
 

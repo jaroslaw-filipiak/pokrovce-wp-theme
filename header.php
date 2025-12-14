@@ -23,6 +23,7 @@
     <!-- fav + manifest -->
     <link rel="icon" type="image/png" href="<?php echo get_theme_file_uri() ?>/public/favicon-96x96.png"
         sizes="96x96" />
+    sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="<?php echo get_theme_file_uri() ?>/public/favicon.svg" />
     <link rel="shortcut icon" href="<?php echo get_theme_file_uri() ?>/public/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180"
@@ -35,7 +36,7 @@
     <?php wp_body_open(); ?>
     <div id="page" class="site">
         <header id="site-header"
-            class="fixed left-0 top-0 w-full z-[9999] bg-white transition-all ease-in-out duration-300">
+            class="fixed left-0 top-0 w-full z-[100] bg-white transition-all ease-in-out duration-300">
             <div class="max-w-[1170px] mx-auto px-4 sm:px-7.5 xl:px-0">
                 <!-- header top start -->
                 <div
@@ -113,7 +114,7 @@
                                         <input type="hidden" name="post_type" value="product">
 
                                         <button type="submit" aria-label="Search"
-                                            class="flex items-center justify-center absolute right-3 top-1/2 -translate-y-1/2 ease-in duration-200 hover:text-blue">
+                                            class="flex items-center justify-center absolute right-3 top-1/2 -translate-y-1/2 ease-in duration-200 hover:text-[#E67E22]">
                                             <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -260,7 +261,7 @@
                             <ul class="flex items-center gap-5.5">
                                 <li class="py-4">
                                     <a href="#"
-                                        class="flex items-center gap-1.5 font-medium text-custom-sm text-dark hover:text-blue">
+                                        class="flex items-center gap-1.5 font-medium text-custom-sm text-dark hover:text-[#E67E22]">
                                         <svg class="fill-current" width="16" height="16" viewBox="0 0 16 16" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -277,7 +278,7 @@
                                 <?php if ( class_exists( 'WooCommerce' ) ) : ?>
                                 <li class="py-4">
                                     <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'wishlist' ) ); ?>"
-                                        class="flex items-center gap-1.5 font-medium text-custom-sm text-dark hover:text-blue">
+                                        class="flex items-center gap-1.5 font-medium text-custom-sm text-dark hover:text-[#E67E22]">
                                         <svg class="fill-current" width="16" height="16" viewBox="0 0 16 16" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path

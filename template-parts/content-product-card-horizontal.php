@@ -40,7 +40,7 @@ $image_url      = wp_get_attachment_image_url( $product->get_image_id(), 'woocom
             <span class="text-custom-xs text-dark-4 ml-1">(<?php echo esc_html( $review_count ); ?>)</span>
         </div>
 
-        <h3 class="font-medium text-dark ease-out duration-200 hover:text-blue mb-1.5 line-clamp-2">
+        <h3 class="font-medium text-dark ease-out duration-200 hover:text-[#E67E22] mb-1.5 line-clamp-2">
             <a href="<?php echo esc_url( $product_link ); ?>"><?php echo esc_html( $product_title ); ?></a>
         </h3>
 
@@ -54,6 +54,8 @@ $image_url      = wp_get_attachment_image_url( $product->get_image_id(), 'woocom
         </span>
     </div>
 </div>
+
+
 
 
 

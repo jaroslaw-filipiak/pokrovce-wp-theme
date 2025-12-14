@@ -42,7 +42,20 @@ document.addEventListener('DOMContentLoaded', function () {
       this.classList.add('border-blue');
     });
   });
+
+  // Custom Zoom Button - trigger WooCommerce lightbox
+  document.querySelectorAll('.gallery__Image').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      // Find the main gallery image link and trigger click
+      const galleryImage = document.querySelector('.woocommerce-product-gallery__image a');
+      if (galleryImage) {
+        galleryImage.click();
+      }
+    });
+  });
 });
+
+
 
 
 
