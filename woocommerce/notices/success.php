@@ -25,8 +25,12 @@ if ( ! $notices ) {
 
 ?>
 
-<?php foreach ( $notices as $notice ) : ?>
-	<div class="woocommerce-message"<?php echo wc_get_notice_data_attr( $notice ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> role="alert">
-		<?php echo wc_kses_notice( $notice['notice'] ); ?>
-	</div>
-<?php endforeach; ?>
+<div class="w-full px-4 mx-auto max-w-7xl sm:px-6 xl:px-0 pt-5">
+    <?php foreach ( $notices as $notice ) : ?>
+    <div class="woocommerce-message "
+        <?php echo wc_get_notice_data_attr( $notice ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+        role="alert">
+        <?php echo wc_kses_notice( $notice['notice'] ); ?>
+    </div>
+    <?php endforeach; ?>
+</div>
