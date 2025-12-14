@@ -5,6 +5,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         global: 'src/global.js',
+        cart: 'src/cart.js',
         // admin: 'src/admin.js',
       },
       output: {
