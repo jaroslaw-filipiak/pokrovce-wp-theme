@@ -22,13 +22,13 @@ $review_count   = $product->get_review_count();
 $image_url      = wp_get_attachment_image_url( $product->get_image_id(), 'woocommerce_thumbnail' );
 ?>
 <div class="group">
-    <div class="relative overflow-hidden flex items-center justify-center rounded-lg bg-[#F6F7FB] min-h-[270px] mb-4">
+    <div class="relative overflow-hidden rounded-lg bg-[#F6F7FB] aspect-square mb-4 p-2 flex items-center justify-center">
         <?php if ( $image_url ) : ?>
-        <img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $product_title ); ?>" width="250"
-            height="250" class="object-contain">
+        <img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $product_title ); ?>" 
+            class="max-w-full max-h-full object-contain">
         <?php else : ?>
         <img src="<?php echo esc_url( wc_placeholder_img_src() ); ?>" alt="<?php echo esc_attr( $product_title ); ?>"
-            width="250" height="250">
+            class="max-w-full max-h-full object-contain">
         <?php endif; ?>
 
         <?php if ( $product->is_on_sale() ) : ?>

@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         new Swiper('.related-carousel', {
             modules: [Navigation],
             slidesPerView: 4,
-            spaceBetween: 24,
+            spaceBetween: 30,
             navigation: {
                 nextEl: '.related-next',
                 prevEl: '.related-prev',
@@ -95,19 +95,19 @@ document.addEventListener('DOMContentLoaded', function() {
             breakpoints: {
                 0: {
                     slidesPerView: 1,
-                    spaceBetween: 16,
+                    spaceBetween: 20,
                 },
                 480: {
                     slidesPerView: 2,
-                    spaceBetween: 16,
+                    spaceBetween: 20,
                 },
                 768: {
                     slidesPerView: 3,
-                    spaceBetween: 20,
+                    spaceBetween: 30,
                 },
                 1024: {
                     slidesPerView: 4,
-                    spaceBetween: 24,
+                    spaceBetween: 30,
                 },
             },
         });

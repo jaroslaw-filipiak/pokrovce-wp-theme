@@ -53,38 +53,9 @@ if ( $related_products ) : ?>
                     <?php
                     $post_object = get_post( $related_product->get_id() );
                     setup_postdata( $GLOBALS['post'] = $post_object );
-                    
-                    global $product;
                     ?>
                     <div class="swiper-slide">
-                        <div class="group">
-                            <a href="<?php the_permalink(); ?>" class="block relative overflow-hidden rounded-lg bg-gray-1 aspect-square mb-4">
-                                <?php if ( $product->is_on_sale() ) : ?>
-                                    <span class="absolute top-3 left-3 bg-green text-white text-xs font-medium px-3 py-1 rounded-full z-10">
-                                        <?php esc_html_e( 'Promocja!', 'pokrovce' ); ?>
-                                    </span>
-                                <?php endif; ?>
-                                <?php echo $product->get_image( 'woocommerce_thumbnail', array( 'class' => 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-300' ) ); ?>
-                            </a>
-                            <h3 class="font-medium text-dark mb-2 group-hover:text-[#E67E22] transition-colors">
-                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                            </h3>
-                            <div class="flex items-center gap-2 mb-3">
-                                <?php if ( $product->is_on_sale() ) : ?>
-                                    <span class="text-gray-5 line-through text-sm"><?php echo wc_price( $product->get_regular_price() ); ?></span>
-                                    <span class="font-semibold text-dark"><?php echo wc_price( $product->get_sale_price() ); ?></span>
-                                <?php else : ?>
-                                    <span class="font-semibold text-dark"><?php echo $product->get_price_html(); ?></span>
-                                <?php endif; ?>
-                            </div>
-                            <a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" 
-                               class="inline-flex py-2 px-4 bg-[#E67E22] text-white rounded-full text-sm ease-out duration-200 hover:bg-[#E67E22]/80"
-                               data-product_id="<?php echo esc_attr( $product->get_id() ); ?>"
-                               data-product_sku="<?php echo esc_attr( $product->get_sku() ); ?>"
-                               aria-label="<?php echo esc_attr( sprintf( __( 'Dodaj do koszyka: %s', 'pokrovce' ), get_the_title() ) ); ?>">
-                                <?php esc_html_e( 'Dodaj do koszyka', 'pokrovce' ); ?>
-                            </a>
-                        </div>
+                        <?php get_template_part( 'template-parts/content', 'product-card' ); ?>
                     </div>
                 <?php endforeach; ?>
             </div>

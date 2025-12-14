@@ -347,31 +347,14 @@ input[type='search']::-webkit-search-results-decoration {
 }
 
 .content-single-product .onsale {
-  @apply inline-flex bg-green text-white px-6 py-2 rounded-full absolute top-4 left-4  z-20;
+  @apply inline-flex bg-green text-white px-6 py-2 rounded-full absolute top-4 left-4 z-20;
 }
 
-.related {
-  .columns-3 {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 list-none p-0 m-0;
-  }
+/* Related carousel - slajdy pełna szerokość */
+.related-carousel .swiper-slide {
+  @apply h-auto;
+}
 
-  li.product {
-    @apply relative;
-  }
-
-  li.product img {
-    @apply w-full h-auto rounded-lg aspect-square object-cover;
-  }
-
-  li.product .woocommerce-loop-product__title {
-    @apply text-base font-medium mt-3 text-dark;
-  }
-
-  li.product .price {
-    @apply block mt-2 font-semibold;
-  }
-
-  li.product .button {
-    @apply inline-flex mt-3 py-2 px-4 bg-[#E67E22] text-white rounded-full text-sm ease-out duration-200 hover:bg-[#E67E22]/80;
-  }
+.related-carousel .swiper-slide .group {
+  @apply w-full;
 }
