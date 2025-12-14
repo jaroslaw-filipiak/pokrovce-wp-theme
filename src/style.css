@@ -358,3 +358,9 @@ input[type='search']::-webkit-search-results-decoration {
 .related-carousel .swiper-slide .group {
   @apply w-full;
 }
+
+/* cart */
+
+body.woocommerce-cart .wp-block-woocommerce-cart {
+  @apply container mx-auto py-5 lg:py-12 xl:py-16;
+}
