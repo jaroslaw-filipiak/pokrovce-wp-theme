@@ -485,3 +485,92 @@ input[type='search']::-webkit-search-results-decoration {
     @apply bg-transparent p-0;
   }
 }
+
+/* ==========================================================================
+   Shop / Archive Product Styles
+   ========================================================================== */
+
+/* Shop ordering select */
+.shop-ordering .woocommerce-ordering {
+  @apply flex items-center gap-2;
+}
+
+.shop-ordering .woocommerce-ordering select {
+  @apply bg-white border border-gray-3 rounded-lg py-2.5 px-4 pr-10 text-dark-3 text-custom-sm;
+  @apply focus:border-[#E67E22] focus:ring-2 focus:ring-[#E67E22]/20 focus:outline-none transition-all duration-200;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238D93A5' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+/* Shop result count */
+.shop-result-count .woocommerce-result-count {
+  @apply m-0;
+}
+
+/* Shop pagination */
+.shop-pagination ul {
+  @apply flex items-center justify-center gap-2 list-none m-0 p-0;
+}
+
+.shop-pagination li {
+  @apply m-0 p-0;
+}
+
+.shop-pagination a,
+.shop-pagination span {
+  @apply flex items-center justify-center min-w-[40px] h-10 px-3 rounded-lg text-dark-3 font-medium text-custom-sm;
+  @apply border border-gray-3 bg-white transition-all duration-200;
+}
+
+.shop-pagination a:hover {
+  @apply border-[#E67E22] text-[#E67E22];
+}
+
+.shop-pagination .current {
+  @apply bg-[#E67E22] border-[#E67E22] text-white;
+}
+
+.shop-pagination .prev,
+.shop-pagination .next {
+  @apply text-dark-4;
+}
+
+.shop-pagination .prev:hover,
+.shop-pagination .next:hover {
+  @apply border-[#E67E22] text-[#E67E22];
+}
+
+.shop-pagination .dots {
+  @apply border-transparent bg-transparent;
+}
+
+/* ==========================================================================
+   Product Card Styles
+   ========================================================================== */
+
+/* Product card - make sure clickable overlay doesn't block buttons */
+.product-card {
+  @apply relative;
+}
+
+/* On touch devices (mobile), show action buttons always */
+@media (hover: none) and (pointer: coarse) {
+  .product-card-actions {
+    @apply translate-y-0;
+  }
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
