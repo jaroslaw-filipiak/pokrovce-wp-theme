@@ -1,17 +1,8 @@
 <?php
 /**
- * Lost password form
+ * Lost password form - Styled for Pokrovce theme
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/myaccount/form-lost-password.php.
- *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
- * @see https://woocommerce.com/document/template-structure/
- * @package WooCommerce\Templates
+ * @package Pokrovce
  * @version 9.2.0
  */
 
@@ -20,26 +11,59 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_before_lost_password_form' );
 ?>
 
-<form method="post" class="woocommerce-ResetPassword lost_reset_password">
+<div class="max-w-md mx-auto">
+	<div class="bg-white rounded-2xl shadow-1 border border-gray-3 p-6 sm:p-8">
+		<div class="text-center mb-6">
+			<div class="flex items-center justify-center w-16 h-16 bg-yellow/10 rounded-full mx-auto mb-4">
+				<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="3" y="11" width="18" height="11" rx="2" stroke="#FBBF24" stroke-width="2"/>
+					<path d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11" stroke="#FBBF24" stroke-width="2" stroke-linecap="round"/>
+					<circle cx="12" cy="16" r="1" fill="#FBBF24"/>
+				</svg>
+			</div>
+			<h2 class="font-semibold text-xl text-dark"><?php esc_html_e( 'Zapomniałeś hasła?', 'pokrovce' ); ?></h2>
+			<p class="text-dark-4 text-custom-sm mt-2">
+				<?php esc_html_e( 'Wpisz swój email lub nazwę użytkownika, a wyślemy Ci link do resetowania hasła.', 'pokrovce' ); ?>
+			</p>
+		</div>
 
-	<p><?php echo apply_filters( 'woocommerce_lost_password_message', esc_html__( 'Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.', 'woocommerce' ) ); ?></p><?php // @codingStandardsIgnoreLine ?>
+		<form method="post" class="woocommerce-ResetPassword lost_reset_password space-y-5">
 
-	<p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
-		<label for="user_login"><?php esc_html_e( 'Username or email', 'woocommerce' ); ?>&nbsp;<span class="required" aria-hidden="true">*</span><span class="screen-reader-text"><?php esc_html_e( 'Required', 'woocommerce' ); ?></span></label>
-		<input class="woocommerce-Input woocommerce-Input--text input-text" type="text" name="user_login" id="user_login" autocomplete="username" required aria-required="true" />
-	</p>
+			<div>
+				<label for="user_login" class="block text-dark font-medium mb-2 text-custom-sm">
+					<?php esc_html_e( 'Email lub nazwa użytkownika', 'pokrovce' ); ?> <span class="text-red">*</span>
+				</label>
+				<input type="text" 
+					class="w-full bg-gray-1 border border-gray-3 outline-none rounded-lg placeholder:text-dark-4 py-3 px-4 focus:border-[#E67E22] focus:ring-2 focus:ring-[#E67E22]/20 transition-all duration-200" 
+					name="user_login" 
+					id="user_login" 
+					autocomplete="username"
+					placeholder="<?php esc_attr_e( 'Wpisz email lub nazwę', 'pokrovce' ); ?>" 
+					required />
+			</div>
 
-	<div class="clear"></div>
+			<?php do_action( 'woocommerce_lostpassword_form' ); ?>
 
-	<?php do_action( 'woocommerce_lostpassword_form' ); ?>
+			<input type="hidden" name="wc_reset_password" value="true" />
+			<?php wp_nonce_field( 'lost_password', 'woocommerce-lost-password-nonce' ); ?>
+			
+			<button type="submit" 
+				class="w-full bg-[#E67E22] text-white font-medium py-3.5 px-6 rounded-lg cursor-pointer hover:bg-[#E67E22]/90 transition-colors duration-200 flex items-center justify-center gap-2">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+				<?php esc_html_e( 'Wyślij link resetujący', 'pokrovce' ); ?>
+			</button>
 
-	<p class="woocommerce-form-row form-row">
-		<input type="hidden" name="wc_reset_password" value="true" />
-		<button type="submit" class="woocommerce-Button button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" value="<?php esc_attr_e( 'Reset password', 'woocommerce' ); ?>"><?php esc_html_e( 'Reset password', 'woocommerce' ); ?></button>
-	</p>
+			<div class="text-center">
+				<a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="text-[#E67E22] text-custom-sm font-medium hover:text-[#E67E22]/80 transition-colors">
+					<?php esc_html_e( '← Wróć do logowania', 'pokrovce' ); ?>
+				</a>
+			</div>
 
-	<?php wp_nonce_field( 'lost_password', 'woocommerce-lost-password-nonce' ); ?>
+		</form>
+	</div>
+</div>
 
-</form>
-<?php
-do_action( 'woocommerce_after_lost_password_form' );
+<?php do_action( 'woocommerce_after_lost_password_form' ); ?>

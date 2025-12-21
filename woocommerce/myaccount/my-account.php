@@ -1,36 +1,30 @@
 <?php
 /**
- * My Account page
+ * My Account page - Styled for Pokrovce theme
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/myaccount/my-account.php.
- *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
- * @see     https://woocommerce.com/document/template-structure/
- * @package WooCommerce\Templates
+ * @package Pokrovce
  * @version 3.5.0
  */
 
 defined( 'ABSPATH' ) || exit;
 
-/**
- * My Account navigation.
- *
- * @since 2.6.0
- */
-do_action( 'woocommerce_account_navigation' ); ?>
+$current_user = wp_get_current_user();
+?>
 
-<div class="woocommerce-MyAccount-content">
-	<?php
-		/**
-		 * My Account content.
-		 *
-		 * @since 2.6.0
-		 */
-		do_action( 'woocommerce_account_content' );
-	?>
+<div class="myaccount-wrapper">
+	<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+		
+		<!-- Sidebar Navigation -->
+		<div class="lg:col-span-1">
+			<?php do_action( 'woocommerce_account_navigation' ); ?>
+		</div>
+
+		<!-- Content Area -->
+		<div class="lg:col-span-3">
+			<div class="woocommerce-MyAccount-content bg-white rounded-2xl shadow-1 border border-gray-3 p-6 sm:p-8">
+				<?php do_action( 'woocommerce_account_content' ); ?>
+			</div>
+		</div>
+
+	</div>
 </div>
