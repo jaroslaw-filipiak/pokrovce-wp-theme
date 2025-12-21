@@ -1,0 +1,19 @@
+/**
+ * FAQ Styles
+ * Loaded only on FAQ page via enqueue
+ */
+
+@tailwind components;
+@tailwind utilities;
+
+/* FAQ list */
+.faq-list {
+  @apply flex flex-col gap-4;
+}
+
+/* FAQ item */
+.faq-item {
+  @apply border border-dark-3 p-4 rounded-md;
+}
+
+/* FAQ item title */

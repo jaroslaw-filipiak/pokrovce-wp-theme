@@ -1,0 +1,364 @@
+/**
+ * WooCommerce Checkout Styles
+ * Loaded only on checkout page via enqueue
+ */
+
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   Checkout - Container & Layout
+   ============================================ */
+
+/* Kontener główny */
+.woocommerce-checkout .wp-block-woocommerce-checkout {
+  @apply max-w-[1170px] mx-auto px-4 sm:px-7.5 xl:px-0 py-8 lg:py-12 xl:py-16;
+}
+
+/* Ogólne - font */
+.wp-block-woocommerce-checkout,
+.wc-block-checkout,
+.wc-block-checkout * {
+  @apply font-euclid-circular-a;
+}
+
+/* Tytuł strony */
+.woocommerce-checkout .entry-title {
+  @apply text-2xl lg:text-3xl font-semibold text-dark mb-6 lg:mb-8;
+}
+
+/* ============================================
+   Checkout Steps (Kroki formularza)
+   ============================================ */
+
+.wc-block-components-checkout-step {
+  @apply mb-8 pb-8 border-b border-gray-3;
+}
+
+.wc-block-components-checkout-step:last-of-type {
+  @apply border-b-0;
+}
+
+/* Tytuły sekcji */
+.wc-block-components-checkout-step__title {
+  @apply text-xl lg:text-2xl font-semibold text-dark mb-4;
+}
+
+/* ============================================
+   Form Inputs
+   ============================================ */
+
+/* Text inputs */
+.wc-block-components-text-input input,
+.wc-block-components-textarea textarea {
+  @apply w-full py-3 px-4 text-base border border-gray-3 rounded-md bg-white text-dark placeholder:text-dark-4 focus:outline-none focus:border-[#E67E22] focus:ring-1 focus:ring-[#E67E22]/20 transition-colors;
+}
+
+.wc-block-components-text-input label,
+.wc-block-components-textarea label {
+  @apply text-base text-dark-3 font-normal;
+}
+
+.wc-block-components-text-input.is-active label {
+  @apply text-sm text-dark-4;
+}
+
+/* Select dropdowns */
+.wc-blocks-components-select__select {
+  @apply w-full py-3 px-4 text-base border border-gray-3 rounded-md bg-white text-dark focus:outline-none focus:border-[#E67E22] focus:ring-1 focus:ring-[#E67E22]/20 transition-colors appearance-none cursor-pointer;
+}
+
+.wc-blocks-components-select__label {
+  @apply text-base text-dark-3 font-normal;
+}
+
+/* ============================================
+   Checkboxes & Radio buttons
+   ============================================ */
+
+.wc-block-components-checkbox input[type='checkbox'] {
+  @apply w-5 h-5 accent-[#E67E22] cursor-pointer;
+}
+
+.wc-block-components-checkbox__label {
+  @apply text-base text-dark cursor-pointer;
+}
+
+/* Radio control */
+.wc-block-components-radio-control__option {
+  @apply py-3 px-4 border border-gray-3 rounded-md mb-2 cursor-pointer transition-colors;
+}
+
+.wc-block-components-radio-control__option:hover {
+  @apply border-[#E67E22]/50;
+}
+
+.wc-block-components-radio-control__option-checked,
+.wc-block-components-radio-control__option--checked-option-highlighted {
+  @apply border-[#E67E22] bg-[#E67E22]/5;
+}
+
+.wc-block-components-radio-control__input {
+  @apply w-5 h-5 accent-[#E67E22];
+}
+
+.wc-block-components-radio-control__label {
+  @apply text-base font-medium text-dark;
+}
+
+.wc-block-components-radio-control__secondary-label {
+  @apply text-base font-semibold text-dark;
+}
+
+/* ============================================
+   Shipping Methods
+   ============================================ */
+
+.wc-block-components-shipping-rates-control__package {
+  @apply mt-2;
+}
+
+/* ============================================
+   Payment Methods
+   ============================================ */
+
+.wc-block-components-radio-control-accordion-content {
+  @apply text-base text-dark-3 py-3 px-4 bg-gray-1 rounded-b-md -mt-2 mb-2;
+}
+
+/* ============================================
+   Order Summary Sidebar
+   ============================================ */
+
+.wc-block-checkout__sidebar {
+  @apply bg-gray-1 rounded-lg p-6;
+}
+
+/* Tytuł podsumowania */
+.wc-block-components-checkout-order-summary__title {
+  @apply flex items-center justify-between py-4 cursor-pointer;
+}
+
+.wc-block-components-checkout-order-summary__title-text {
+  @apply text-xl font-semibold text-dark;
+}
+
+.wc-block-components-checkout-order-summary__title-price {
+  @apply text-xl font-semibold text-[#E67E22];
+}
+
+/* Produkty w podsumowaniu */
+.wc-block-components-order-summary-item {
+  @apply flex gap-4 py-4 border-b border-gray-3;
+}
+
+.wc-block-components-order-summary-item:last-child {
+  @apply border-b-0;
+}
+
+.wc-block-components-order-summary-item__image {
+  @apply relative flex-shrink-0 w-16 h-16;
+}
+
+.wc-block-components-order-summary-item__image img {
+  @apply !w-16 !h-16 !min-w-[64px] !min-h-[64px] object-cover rounded-lg bg-[#F6F7FB] p-1;
+}
+
+.wc-block-components-order-summary-item__quantity {
+  @apply absolute -top-2 -right-2 w-5 h-5 bg-[#E67E22] text-white text-xs font-medium rounded-full flex items-center justify-center;
+}
+
+/* Nazwa produktu w podsumowaniu */
+.wc-block-components-order-summary-item .wc-block-components-product-name {
+  @apply text-base font-medium text-dark block mb-1;
+}
+
+/* Cena produktu w podsumowaniu */
+.wc-block-components-order-summary-item__individual-prices {
+  @apply text-sm text-dark-3;
+}
+
+.wc-block-components-order-summary-item__individual-prices del {
+  @apply text-dark-4 mr-2;
+}
+
+.wc-block-components-order-summary-item__individual-prices ins {
+  @apply text-dark font-medium no-underline;
+}
+
+.wc-block-components-order-summary-item__total-price {
+  @apply text-base font-semibold text-dark ml-auto;
+}
+
+/* Ukryj opis w podsumowaniu */
+.wc-block-components-order-summary-item .wc-block-components-product-metadata {
+  @apply hidden;
+}
+
+/* ============================================
+   Totals (Sumy)
+   ============================================ */
+
+.wc-block-components-totals-item {
+  @apply flex justify-between items-center py-3;
+}
+
+.wc-block-components-totals-item__label {
+  @apply text-base text-dark-3;
+}
+
+.wc-block-components-totals-item__value {
+  @apply text-base font-medium text-dark;
+}
+
+/* Suma całkowita */
+.wc-block-components-totals-footer-item {
+  @apply border-t border-gray-3 pt-4 mt-2;
+}
+
+.wc-block-components-totals-footer-item
+  .wc-block-components-totals-item__label {
+  @apply text-lg font-semibold text-dark;
+}
+
+.wc-block-components-totals-footer-item .wc-block-components-totals-item__value,
+.wc-block-components-totals-footer-item-tax-value {
+  @apply text-xl font-semibold text-[#E67E22];
+}
+
+/* ============================================
+   Coupon (Kupon)
+   ============================================ */
+
+.wc-block-components-totals-coupon {
+  @apply py-4 border-b border-gray-3;
+}
+
+.wc-block-components-totals-coupon .wc-block-components-panel__button {
+  @apply text-base font-medium text-dark flex items-center gap-2 cursor-pointer;
+}
+
+.wc-block-components-totals-coupon__form {
+  @apply flex gap-3 mt-3;
+}
+
+.wc-block-components-totals-coupon__input input {
+  @apply flex-1 py-3 px-4 text-base border border-gray-3 rounded-md bg-white text-dark placeholder:text-dark-4 focus:outline-none focus:border-[#E67E22] focus:ring-1 focus:ring-[#E67E22]/20;
+}
+
+.wc-block-components-totals-coupon__button {
+  @apply py-3 px-6 text-base rounded-md bg-[#E67E22] text-white font-medium hover:bg-[#E67E22]/80 transition-colors border-0 cursor-pointer;
+}
+
+/* ============================================
+   Action Buttons
+   ============================================ */
+
+.wc-block-checkout__actions_row {
+  @apply flex flex-col-reverse sm:flex-row items-center justify-between gap-4 mt-8;
+}
+
+/* Wróć do koszyka */
+.wc-block-components-checkout-return-to-cart-button {
+  @apply inline-flex items-center gap-2 text-base font-medium text-[#E67E22] hover:text-[#E67E22]/80 transition-colors no-underline;
+}
+
+/* Przycisk "Kupuję i płacę" */
+.wc-block-components-checkout-place-order-button,
+button.wc-block-components-checkout-place-order-button {
+  @apply w-full sm:w-auto py-4 px-8 rounded-full bg-[#E67E22] text-white font-medium text-lg transition-colors hover:bg-[#E67E22]/80 border-0 cursor-pointer;
+}
+
+.wc-block-components-checkout-place-order-button
+  .wc-block-components-button__text,
+.wc-block-components-checkout-place-order-button__text {
+  @apply text-white font-medium text-lg;
+}
+
+/* ============================================
+   Terms & Conditions
+   ============================================ */
+
+.wc-block-checkout__terms {
+  @apply py-4 border-t border-gray-3 mt-4;
+}
+
+.wc-block-checkout__terms .wc-block-components-checkbox__label {
+  @apply text-sm text-dark-3;
+}
+
+/* ============================================
+   Order Notes
+   ============================================ */
+
+.wc-block-checkout__add-note .wc-block-components-checkbox__label {
+  @apply text-base text-dark;
+}
+
+/* ============================================
+   Address Card
+   ============================================ */
+
+.wc-block-components-address-card {
+  @apply p-4 bg-gray-1 rounded-lg;
+}
+
+.wc-block-components-address-card address {
+  @apply text-base text-dark not-italic;
+}
+
+.wc-block-components-address-card__edit {
+  @apply text-[#E67E22] font-medium cursor-pointer hover:text-[#E67E22]/80 transition-colors;
+}
+
+/* ============================================
+   Notices
+   ============================================ */
+
+.wc-block-components-notice-banner {
+  @apply mb-4 py-3 px-4 rounded-lg border-l-4;
+}
+
+.wc-block-components-notice-banner.is-error {
+  @apply bg-red-light-6 border-l-red text-red;
+}
+
+.wc-block-components-notice-banner.is-success {
+  @apply bg-green-light-6 border-l-green text-green-dark;
+}
+
+.wc-block-components-notice-banner.is-info {
+  @apply bg-blue-light-5 border-l-blue text-blue-dark;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 1023px) {
+  .wc-block-checkout__sidebar {
+    @apply mt-8;
+  }
+}
+
+@media (max-width: 767px) {
+  .wc-block-components-checkout-step__title {
+    @apply text-lg;
+  }
+
+  .wc-block-components-order-summary-item__image img {
+    @apply w-14 h-14;
+  }
+
+  .wc-block-components-checkout-place-order-button {
+    @apply w-full text-center justify-center;
+  }
+}
+
+/* ============================================
+   Hide entry header on checkout
+   ============================================ */
+
+.woocommerce-checkout .entry-header {
+  @apply max-w-[1170px] mx-auto px-4 sm:px-7.5 xl:px-0 pt-8;
+}

@@ -6,6 +6,8 @@ export default defineConfig({
       input: {
         global: 'src/global.js',
         cart: 'src/cart.js',
+        checkout: 'src/checkout.js',
+        faq: 'src/faq.js',
         // admin: 'src/admin.js',
       },
       output: {

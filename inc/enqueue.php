@@ -23,5 +23,19 @@ function pokrovce_scripts() {
 	if ( function_exists( 'is_cart' ) && is_cart() ) {
 		wp_enqueue_style( 'pokrovce-cart', get_template_directory_uri() . '/dist/assets/cart.css', array( 'pokrovce-global' ), _S_VERSION );
 	}
+
+	/**
+	 * Checkout styles - load only on checkout page
+	 */
+	if ( function_exists( 'is_checkout' ) && is_checkout() ) {
+		wp_enqueue_style( 'pokrovce-checkout', get_template_directory_uri() . '/dist/assets/checkout.css', array( 'pokrovce-global' ), _S_VERSION );
+	}
+
+	/**
+	 * FAQ styles - load only on FAQ page
+	 */
+	if ( function_exists( 'is_page' ) && is_page( 'faq' ) ) {
+		wp_enqueue_style( 'pokrovce-faq', get_template_directory_uri() . '/dist/assets/faq.css', array( 'pokrovce-global' ), _S_VERSION );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'pokrovce_scripts' );

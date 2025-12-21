@@ -80,7 +80,8 @@ $year = date( 'Y' );
                         </svg>
                     </a>
 
-                    <a href="#" aria-label="Twitter Social Link" class="hidden ease-out duration-200 hover:text-[#E67E22]">
+                    <a href="#" aria-label="Twitter Social Link"
+                        class="hidden ease-out duration-200 hover:text-[#E67E22]">
                         <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -89,7 +90,8 @@ $year = date( 'Y' );
                         </svg>
                     </a>
 
-                    <a href="#" aria-label="Instagram Social Link" class="hidden ease-out duration-200 hover:text-[#E67E22]">
+                    <a href="#" aria-label="Instagram Social Link"
+                        class="hidden ease-out duration-200 hover:text-[#E67E22]">
                         <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_footer_instagram)">
@@ -111,7 +113,8 @@ $year = date( 'Y' );
                         </svg>
                     </a>
 
-                    <a href="#" aria-label="Linkedin Social Link" class="hidden ease-out duration-200 hover:text-[#E67E22]">
+                    <a href="#" aria-label="Linkedin Social Link"
+                        class="hidden ease-out duration-200 hover:text-[#E67E22]">
                         <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -172,19 +175,22 @@ $year = date( 'Y' );
                         'fallback_cb'    => function() {
                             ?>
                 <ul class="flex flex-col gap-3">
-                    <li><a class="ease-out duration-200 hover:text-[#E67E22]"
+                    <li><a target="_blank" class="ease-out duration-200 hover:text-[#E67E22]"
                             href="<?php echo esc_url( get_privacy_policy_url() ); ?>"><?php esc_html_e( 'Polityka prywatności', 'pokrovce' ); ?></a>
 
                     </li>
 
-                    <li><a class="ease-out duration-200 hover:text-[#E67E22]"
-                            href="#"><?php esc_html_e( 'Regulamin', 'pokrovce' ); ?></a></li>
-                    <li><a class="ease-out duration-200 hover:text-[#E67E22]"
-                            href="#"><?php esc_html_e( "FAQ", 'pokrovce' ); ?></a></li>
-                    <li><a class="ease-out duration-200 hover:text-[#E67E22]"
-                            href="#"><?php esc_html_e( 'O nas', 'pokrovce' ); ?></a></li>
-                    <li><a class="ease-out duration-200 hover:text-[#E67E22]"
-                            href="#"><?php esc_html_e( 'Kontakt', 'pokrovce' ); ?></a></li>
+                    <li><a target="_blank" class="ease-out duration-200 hover:text-[#E67E22]"
+                            href="<?php echo get_home_url(); ?>/regulamin"><?php esc_html_e( 'Regulamin', 'pokrovce' ); ?></a>
+                    </li>
+                    <li><a target="_blank" class="ease-out duration-200 hover:text-[#E67E22]"
+                            href="<?php echo get_home_url(); ?>/faq"><?php esc_html_e( "FAQ", 'pokrovce' ); ?></a></li>
+                    <li><a target="_blank" class="ease-out duration-200 hover:text-[#E67E22]"
+                            href="<?php echo get_home_url(); ?>/o-nas"><?php esc_html_e( 'O nas', 'pokrovce' ); ?></a>
+                    </li>
+                    <li><a target="_blank" class="ease-out duration-200 hover:text-[#E67E22]"
+                            href="<?php echo get_home_url(); ?>/kontakt"><?php esc_html_e( 'Kontakt', 'pokrovce' ); ?></a>
+                    </li>
                 </ul>
                 <?php
                         },
