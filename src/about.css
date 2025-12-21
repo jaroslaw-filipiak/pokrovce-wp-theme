@@ -1,0 +1,65 @@
+/**
+ * About Page Styles
+ * Loaded only on About page via enqueue
+ */
+
+@tailwind components;
+@tailwind utilities;
+
+/* Feature cards hover animation */
+.feature-card {
+  @apply relative;
+}
+
+.feature-card::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-br from-[#E67E22]/5 to-transparent opacity-0 rounded-xl transition-opacity duration-300;
+}
+
+.feature-card:hover::before {
+  @apply opacity-100;
+}
+
+/* Value items */
+.value-item {
+  @apply transition-transform duration-300;
+}
+
+.value-item:hover {
+  @apply -translate-y-1;
+}
+
+/* Stats animation */
+.stat-item {
+  @apply transition-transform duration-300;
+}
+
+.stat-item:hover {
+  @apply scale-105;
+}
+
+/* Mission section gradient */
+.about-mission {
+  @apply relative;
+}
+
+/* Stats section */
+.about-stats {
+  @apply relative;
+}
+
+/* CTA section */
+.about-cta {
+  @apply relative;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .about-hero h1 {
+    @apply text-heading-5;
+  }
+  
+  .about-stats .stat-number {
+    @apply text-heading-5;
+  }
+}

@@ -8,6 +8,8 @@ export default defineConfig({
         cart: 'src/cart.js',
         checkout: 'src/checkout.js',
         faq: 'src/faq.js',
+        about: 'src/about.js',
+        contact: 'src/contact.js',
         // admin: 'src/admin.js',
       },
       output: {
