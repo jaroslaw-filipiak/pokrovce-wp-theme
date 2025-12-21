@@ -15,7 +15,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main page container pt-30 lg:pt-40">
+<main id="primary" class="site-main page max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0 pt-25 lg:pt-15 pb-15">
 
     <?php
 		while ( have_posts() ) :

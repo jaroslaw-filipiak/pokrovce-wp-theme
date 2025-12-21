@@ -13,7 +13,53 @@
 
 /* FAQ item */
 .faq-item {
-  @apply border border-dark-3 p-4 rounded-md;
+  @apply border border-gray-3 rounded-lg overflow-hidden bg-white shadow-1;
 }
 
-/* FAQ item title */
+/* FAQ header (question) */
+.faq-item h3 {
+  @apply m-0 py-4 px-5 cursor-pointer select-none relative pr-12 transition-colors duration-200;
+  @apply font-medium text-custom-lg text-dark;
+}
+
+.faq-item h3:hover {
+  @apply bg-gray-1;
+}
+
+/* Plus/minus icon */
+.faq-item h3::after {
+  content: '+';
+  @apply absolute right-5 top-1/2 -translate-y-1/2 text-xl text-dark-4 font-light transition-transform duration-300;
+}
+
+.faq-item.is-open h3::after {
+  content: '−';
+  @apply text-dark;
+}
+
+/* FAQ content wrapper - grid trick for smooth animation */
+.faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease-in-out;
+}
+
+.faq-item.is-open .faq-content {
+  grid-template-rows: 1fr;
+}
+
+/* FAQ content inner - the grid child */
+.faq-content > div {
+  @apply overflow-hidden;
+  min-height: 0;
+}
+
+/* Actual content with padding */
+.faq-content p {
+  @apply m-0 px-5 pt-0 pb-5 text-dark-3;
+}
+
+/* Border separator when open */
+.faq-item.is-open h3 {
+  @apply border-b border-gray-3;
+}

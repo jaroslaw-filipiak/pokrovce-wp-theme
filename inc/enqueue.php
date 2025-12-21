@@ -32,10 +32,11 @@ function pokrovce_scripts() {
 	}
 
 	/**
-	 * FAQ styles - load only on FAQ page
+	 * FAQ styles - load only on FAQ page template
 	 */
-	if ( function_exists( 'is_page' ) && is_page( 'faq' ) ) {
+	if ( is_page_template( 'page-templates/page-faq.php' ) ) {
 		wp_enqueue_style( 'pokrovce-faq', get_template_directory_uri() . '/dist/assets/faq.css', array( 'pokrovce-global' ), _S_VERSION );
+		wp_enqueue_script( 'pokrovce-faq', get_template_directory_uri() . '/dist/assets/faq.js', array( 'pokrovce-global' ), _S_VERSION, true );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'pokrovce_scripts' );
