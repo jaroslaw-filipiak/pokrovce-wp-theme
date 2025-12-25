@@ -1,0 +1,496 @@
+/**
+ * My Account page styles
+ *
+ * @package pokrovce
+ */
+
+/* ==========================================================================
+   My Account Layout
+   ========================================================================== */
+
+/* My Account page container */
+.woocommerce-account .site-main {
+  @apply py-15 lg:py-15;
+}
+
+.woocommerce-account .woocommerce {
+  @apply max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0;
+}
+
+/* Login page - centered layout */
+.woocommerce-account:not(.logged-in) .woocommerce {
+  @apply max-w-[1000px];
+}
+
+/* ==========================================================================
+   Navigation Sidebar
+   ========================================================================== */
+
+/* Navigation list - no bullets (template uses inline SVG icons) */
+.woocommerce-MyAccount-navigation ul {
+  @apply list-none m-0 p-0;
+}
+
+.woocommerce-MyAccount-navigation li {
+  @apply list-none m-0;
+}
+
+/* Logout link color */
+.woocommerce-MyAccount-navigation-link--customer-logout a {
+  @apply text-red hover:text-red-dark;
+}
+
+.woocommerce-MyAccount-navigation-link--customer-logout a svg {
+  @apply text-red;
+}
+
+/* ==========================================================================
+   Content Area
+   ========================================================================== */
+
+/* Remove default styling since template has inline classes */
+.woocommerce-MyAccount-content > p:first-child {
+  @apply text-dark-3 mb-6;
+}
+
+.woocommerce-MyAccount-content > p:first-child strong {
+  @apply text-dark;
+}
+
+.woocommerce-MyAccount-content > p:first-child a {
+  @apply text-[#E67E22] hover:underline;
+}
+
+/* Dashboard Widgets */
+.woocommerce-MyAccount-content .dashboard-widget {
+  @apply bg-gray-1 rounded-lg p-5 mb-4;
+}
+
+/* ==========================================================================
+   Orders Table
+   ========================================================================== */
+
+.woocommerce-orders-table {
+  @apply w-full;
+}
+
+.woocommerce-orders-table thead {
+  @apply bg-gray-1;
+}
+
+.woocommerce-orders-table th {
+  @apply px-4 py-3 text-left text-sm font-semibold text-dark;
+}
+
+.woocommerce-orders-table td {
+  @apply px-4 py-4 text-sm text-dark-3 border-b border-gray-3;
+}
+
+.woocommerce-orders-table__cell-order-number a {
+  @apply text-[#E67E22] font-medium hover:underline;
+}
+
+.woocommerce-orders-table__cell-order-actions a {
+  @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-[#E67E22] rounded-md hover:bg-[#E67E22]/80 transition-colors;
+}
+
+.woocommerce-orders-table__cell-order-actions a + a {
+  @apply ml-2;
+}
+
+/* Order status badges */
+.woocommerce-orders-table__cell-order-status {
+  @apply capitalize;
+}
+
+/* ==========================================================================
+   View Order Page
+   ========================================================================== */
+
+.woocommerce-order-details,
+.woocommerce-customer-details {
+  @apply mt-8;
+}
+
+.woocommerce-order-details h2,
+.woocommerce-customer-details h2 {
+  @apply font-semibold text-lg text-dark mb-4;
+}
+
+.woocommerce-order-details .shop_table,
+.woocommerce-order-details table {
+  @apply w-full border-collapse;
+}
+
+.woocommerce-order-details .shop_table th,
+.woocommerce-order-details .shop_table td {
+  @apply px-4 py-3 text-left border-b border-gray-3;
+}
+
+.woocommerce-order-details .shop_table thead th {
+  @apply bg-gray-1 font-medium text-dark text-custom-sm;
+}
+
+.woocommerce-order-details .shop_table tbody td {
+  @apply text-dark-3;
+}
+
+.woocommerce-order-details .shop_table tfoot th {
+  @apply text-dark font-medium;
+}
+
+.woocommerce-order-details .shop_table tfoot td {
+  @apply text-dark;
+}
+
+/* Customer details addresses */
+.woocommerce-customer-details .addresses {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+.woocommerce-customer-details .woocommerce-column {
+  @apply bg-gray-1 rounded-xl p-5;
+}
+
+.woocommerce-customer-details .woocommerce-column h3 {
+  @apply font-medium text-dark mb-3;
+}
+
+.woocommerce-customer-details address {
+  @apply text-dark-3 text-custom-sm not-italic leading-relaxed;
+}
+
+/* ==========================================================================
+   Addresses
+   ========================================================================== */
+
+.woocommerce-Addresses {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+.woocommerce-Address {
+  @apply bg-gray-1 rounded-lg p-5;
+}
+
+.woocommerce-Address-title {
+  @apply flex items-center justify-between mb-4;
+}
+
+.woocommerce-Address-title h3 {
+  @apply font-semibold text-dark;
+}
+
+.woocommerce-Address-title a {
+  @apply text-sm text-[#E67E22] hover:underline;
+}
+
+.woocommerce-Address address {
+  @apply text-dark-3 not-italic leading-relaxed;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+.woocommerce-EditAccountForm,
+.woocommerce-address-fields {
+  @apply space-y-5;
+}
+
+.woocommerce-EditAccountForm .form-row,
+.woocommerce-address-fields .form-row {
+  @apply mb-4;
+}
+
+.woocommerce-EditAccountForm label,
+.woocommerce-address-fields label {
+  @apply block text-sm font-medium text-dark mb-2;
+}
+
+.woocommerce-address-fields .form-row label .required {
+  @apply text-red;
+}
+
+.woocommerce-EditAccountForm input[type='text'],
+.woocommerce-EditAccountForm input[type='email'],
+.woocommerce-EditAccountForm input[type='password'],
+.woocommerce-address-fields input[type='text'],
+.woocommerce-address-fields select,
+.woocommerce-address-fields textarea {
+  @apply w-full px-4 py-3 border border-gray-3 rounded-lg text-dark placeholder:text-dark-4 focus:outline-none focus:border-[#E67E22] focus:ring-1 focus:ring-[#E67E22] transition-colors;
+}
+
+.woocommerce-address-fields .form-row input:not([type='checkbox']),
+.woocommerce-address-fields .form-row select,
+.woocommerce-address-fields .form-row textarea {
+  @apply w-full bg-white border border-gray-3 outline-none rounded-lg placeholder:text-dark-4 py-3 px-4;
+  @apply focus:border-[#E67E22] focus:ring-2 focus:ring-[#E67E22]/20 transition-all duration-200;
+}
+
+.woocommerce-EditAccountForm button[type='submit'],
+.woocommerce-address-fields button[type='submit'] {
+  @apply inline-flex items-center justify-center px-6 py-3 font-medium text-white bg-[#E67E22] rounded-lg hover:bg-[#E67E22]/80 transition-colors;
+}
+
+/* Select2 styling for country/state dropdowns */
+.woocommerce-address-fields .select2-container {
+  @apply w-full;
+}
+
+.woocommerce-address-fields .select2-container .select2-selection--single {
+  @apply bg-white border border-gray-3 rounded-lg py-3 px-4 h-auto;
+  @apply focus:border-[#E67E22] focus:ring-2 focus:ring-[#E67E22]/20 transition-all duration-200;
+}
+
+.woocommerce-address-fields
+  .select2-container--default
+  .select2-selection--single
+  .select2-selection__rendered {
+  @apply text-dark py-0 px-0 leading-normal;
+}
+
+.woocommerce-address-fields
+  .select2-container--default
+  .select2-selection--single
+  .select2-selection__arrow {
+  @apply h-full top-0 right-3;
+}
+
+/* Wide fields (country, etc.) */
+.woocommerce-address-fields .form-row-wide,
+.woocommerce-address-fields .form-row.address-field {
+  @apply sm:col-span-2;
+}
+
+.woocommerce-address-fields .form-row-first,
+.woocommerce-address-fields .form-row-last {
+  @apply sm:col-span-1;
+}
+
+/* ==========================================================================
+   Downloads Page
+   ========================================================================== */
+
+.woocommerce-MyAccount-downloads {
+  @apply space-y-4;
+}
+
+.woocommerce-MyAccount-downloads .download-product a {
+  @apply text-[#E67E22] font-medium hover:text-[#E67E22]/80 transition-colors;
+}
+
+/* ==========================================================================
+   Payment Methods Page
+   ========================================================================== */
+
+.woocommerce-MyAccount-paymentMethods,
+.account-payment-methods-table {
+  @apply w-full;
+}
+
+.woocommerce-MyAccount-paymentMethods thead {
+  @apply bg-gray-1;
+}
+
+.woocommerce-MyAccount-paymentMethods th {
+  @apply px-4 py-3 text-left text-sm font-semibold text-dark;
+}
+
+.woocommerce-MyAccount-paymentMethods td {
+  @apply px-4 py-4 text-sm text-dark-3 border-b border-gray-3;
+}
+
+.woocommerce-MyAccount-paymentMethods .default-payment-method td {
+  @apply bg-[#E67E22]/5;
+}
+
+/* Action buttons in payment methods */
+.woocommerce-MyAccount-paymentMethods .button {
+  @apply inline-flex items-center justify-center px-3 py-1.5 text-xs font-medium rounded transition-colors no-underline mr-1;
+}
+
+.woocommerce-MyAccount-paymentMethods .button.delete {
+  @apply text-red border border-red/30 bg-transparent hover:bg-red hover:text-white;
+}
+
+.woocommerce-MyAccount-paymentMethods .button:not(.delete) {
+  @apply text-dark-3 border border-gray-3 bg-transparent hover:bg-gray-1 hover:text-dark;
+}
+
+/* Add payment method button */
+.woocommerce-MyAccount-content > a.button[href*='add-payment-method'] {
+  @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg transition-colors no-underline mt-6;
+  background-color: #e67e22 !important;
+  color: #fff !important;
+}
+
+.woocommerce-MyAccount-content > a.button[href*='add-payment-method']:hover {
+  background-color: rgba(230, 126, 34, 0.8) !important;
+}
+
+.woocommerce-MyAccount-content > a.button[href*='add-payment-method']::before {
+  content: '+';
+  @apply text-lg font-bold leading-none;
+}
+
+/* ==========================================================================
+   Password Strength Meter
+   ========================================================================== */
+
+.woocommerce-password-strength {
+  @apply mt-2 text-custom-sm font-medium;
+}
+
+.woocommerce-password-strength.short {
+  @apply text-red;
+}
+
+.woocommerce-password-strength.bad {
+  @apply text-red;
+}
+
+.woocommerce-password-strength.good {
+  @apply text-yellow-dark;
+}
+
+.woocommerce-password-strength.strong {
+  @apply text-green;
+}
+
+/* Password hint */
+.woocommerce-password-hint {
+  @apply text-dark-4 text-xs mt-1;
+}
+
+/* ==========================================================================
+   WooCommerce Notices & Empty States
+   ========================================================================== */
+
+/* Success message */
+.woocommerce-account .woocommerce-message {
+  @apply rounded-xl mb-6 p-5 flex flex-wrap items-center gap-4 bg-green/10 border border-green/20;
+}
+
+.woocommerce-account .woocommerce-message::before {
+  content: '';
+  @apply w-5 h-5 flex-shrink-0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2322AD5C'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'/%3E%3C/svg%3E");
+  background-size: contain;
+}
+
+/* Info/Empty state - styled nicely */
+.woocommerce-account .woocommerce-info {
+  @apply rounded-xl mb-6 p-6 flex flex-col sm:flex-row items-center gap-4 bg-gray-1 border border-gray-3 text-center sm:text-left;
+}
+
+.woocommerce-account .woocommerce-info::before {
+  content: '';
+  @apply w-12 h-12 flex-shrink-0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23637381'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/%3E%3C/svg%3E");
+  background-size: contain;
+}
+
+/* Error message */
+.woocommerce-account .woocommerce-error {
+  @apply rounded-xl mb-6 p-5 flex flex-wrap items-start gap-4 bg-red/10 border border-red/20 text-red;
+}
+
+.woocommerce-account .woocommerce-error::before {
+  content: '';
+  @apply w-5 h-5 flex-shrink-0 mt-0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23F23030'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'/%3E%3C/svg%3E");
+  background-size: contain;
+}
+
+.woocommerce-account .woocommerce-error li {
+  @apply m-0;
+}
+
+/* Text styling in notices */
+.woocommerce-account .woocommerce-message {
+  @apply text-green-dark;
+}
+
+.woocommerce-account .woocommerce-info {
+  @apply text-dark-3;
+}
+
+/* Buttons inside notices - force white text */
+.woocommerce-account .woocommerce-info a.button,
+.woocommerce-account .woocommerce-info a.wc-forward,
+.woocommerce-account .woocommerce-message a.button,
+.woocommerce-account .woocommerce-message a.wc-forward {
+  @apply inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-lg transition-colors no-underline sm:ml-auto;
+  background-color: #e67e22 !important;
+  color: #fff !important;
+}
+
+.woocommerce-account .woocommerce-info a.button:hover,
+.woocommerce-account .woocommerce-info a.wc-forward:hover,
+.woocommerce-account .woocommerce-message a.button:hover,
+.woocommerce-account .woocommerce-message a.wc-forward:hover {
+  background-color: rgba(230, 126, 34, 0.8) !important;
+}
+
+/* Alternative info style */
+.woocommerce-Message--info {
+  @apply bg-gray-1 border border-gray-3 text-dark-3 px-6 py-5 rounded-xl mb-6 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left;
+}
+
+.woocommerce-Message--info::before {
+  content: '';
+  @apply w-12 h-12 flex-shrink-0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23637381'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/%3E%3C/svg%3E");
+  background-size: contain;
+}
+
+.woocommerce-Message--info a:not(.button):not(.wc-forward) {
+  @apply text-[#E67E22] font-medium hover:underline;
+}
+
+/* Button inside Message--info */
+.woocommerce-Message--info a.button,
+.woocommerce-Message--info a.wc-forward {
+  @apply inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-lg transition-colors no-underline sm:ml-auto;
+  background-color: #e67e22 !important;
+  color: #fff !important;
+}
+
+.woocommerce-Message--info a.button:hover,
+.woocommerce-Message--info a.wc-forward:hover {
+  background-color: rgba(230, 126, 34, 0.8) !important;
+}
+
+/* ==========================================================================
+   Mobile Navigation Toggle
+   ========================================================================== */
+
+.myaccount-nav-toggle {
+  @apply w-full flex items-center justify-between px-5 py-4 mb-4 bg-white rounded-xl shadow-1 border border-gray-3 font-medium text-dark;
+}
+
+.myaccount-nav-toggle.is-active {
+  @apply border-[#E67E22];
+}
+
+.myaccount-nav-toggle svg {
+  @apply transition-transform duration-200;
+}
+
+.myaccount-nav-toggle.is-active svg {
+  @apply rotate-180;
+}
+
+.woocommerce-MyAccount-navigation.is-collapsed {
+  @apply hidden;
+}
+
+@media (min-width: 768px) {
+  .myaccount-nav-toggle {
+    @apply hidden;
+  }
+
+  .woocommerce-MyAccount-navigation.is-collapsed {
+    @apply block;
+  }
+}

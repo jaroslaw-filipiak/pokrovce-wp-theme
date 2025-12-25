@@ -54,5 +54,13 @@ function pokrovce_scripts() {
 		wp_enqueue_style( 'pokrovce-contact', get_template_directory_uri() . '/dist/assets/contact.css', array( 'pokrovce-global' ), _S_VERSION );
 		wp_enqueue_script( 'pokrovce-contact', get_template_directory_uri() . '/dist/assets/contact.js', array( 'pokrovce-global' ), _S_VERSION, true );
 	}
+
+	/**
+	 * My Account styles - load only on WooCommerce account pages
+	 */
+	if ( function_exists( 'is_account_page' ) && is_account_page() ) {
+		wp_enqueue_style( 'pokrovce-myaccount', get_template_directory_uri() . '/dist/assets/myaccount.css', array( 'pokrovce-global' ), _S_VERSION );
+		wp_enqueue_script( 'pokrovce-myaccount', get_template_directory_uri() . '/dist/assets/myaccount.js', array( 'pokrovce-global' ), _S_VERSION, true );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'pokrovce_scripts' );

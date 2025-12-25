@@ -10,6 +10,7 @@ export default defineConfig({
         faq: 'src/faq.js',
         about: 'src/about.js',
         contact: 'src/contact.js',
+        myaccount: 'src/myaccount.js',
         // admin: 'src/admin.js',
       },
       output: {
