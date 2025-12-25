@@ -7,36 +7,29 @@
 ?>
 <section class="overflow-hidden">
     <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
-        <div class="relative z-1 overflow-hidden rounded-xl">
-            <!-- bg shapes -->
-            <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/public/images/shapes/newsletter-bg.jpg"
-                alt="background illustration" class="absolute -z-1 w-full h-full left-0 top-0 rounded-xl object-cover"
-                width="1170" height="200">
-            <div class="absolute -z-1 max-w-[523px] max-h-[243px] w-full h-full right-0 top-0 bg-gradient-1"></div>
+        <div class="bg-gradient-to-r from-[#E67E22]/10 to-[#E67E22]/5 rounded-2xl p-8 sm:p-12 relative overflow-hidden">
+            <!-- Decorative circles (same as "Nasza misja" section) -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-[#E67E22]/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 bg-[#E67E22]/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
 
-            <div
-                class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 px-4 sm:px-7.5 xl:pl-12.5 xl:pr-14 py-11 min-h-[224px] ">
-                <div class="max-w-[491px] w-full">
-                    <h2 class="max-w-[399px] text-white font-bold text-lg sm:text-xl xl:text-heading-4 mb-3">
-                        <?php esc_html_e( "Nie przegap naszych ofert i promocji", 'pokrovce' ); ?>
+            <div class="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                <div class="max-w-[500px] w-full">
+                    <h2 class="font-semibold text-xl xl:text-heading-5 text-dark mb-3 flex items-center gap-3">
+                        <span class="flex items-center justify-center w-10 h-10 bg-[#E67E22] rounded-full shrink-0">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M22 6L12 13L2 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <?php esc_html_e( "Nie przegap naszych ofert", 'pokrovce' ); ?>
                     </h2>
-                    <p class="text-white">
-                        <?php esc_html_e( 'Zapisz się do naszego newslettera, aby otrzymać informacje o naszych ofertach i kodach promocyjnych', 'pokrovce' ); ?>
+                    <p class="text-dark-3 text-custom-lg leading-relaxed">
+                        <?php esc_html_e( 'Zapisz się do newslettera i otrzymuj informacje o promocjach, nowościach oraz ekskluzywne kody rabatowe.', 'pokrovce' ); ?>
                     </p>
                 </div>
 
-                <div class="flex-1 w-full lg:pt-8">
-                    <div class="flex flex-col sm:flex-row gap-4 justify-end">
-                        <?php echo do_shortcode('[contact-form-7 id="5995ec1" title="Newsletter"]'); ?>
-
-                        <!-- <input type="email" name="email"
-                                placeholder="<?php esc_attr_e( 'Wpisz swój email', 'pokrovce' ); ?>" required
-                                class="w-full bg-gray-1 border border-gray-3 outline-none rounded-md placeholder:text-dark-4 py-3 px-5">
-                            <button type="submit"
-                                class="flex justify-center py-3 px-7 text-white text-nowrap bg-[#E67E22] font-medium rounded-md ease-out duration-200 hover:bg-[#E67E22]/80">
-                                <?php esc_html_e( 'Zapisz się', 'pokrovce' ); ?>
-                            </button> -->
-                    </div>
+                <div class="flex-1 w-full max-w-[400px]">
+                    <?php echo do_shortcode('[contact-form-7 id="5995ec1" title="Newsletter"]'); ?>
                 </div>
             </div>
         </div>

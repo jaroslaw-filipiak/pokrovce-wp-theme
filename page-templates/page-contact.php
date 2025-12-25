@@ -9,13 +9,67 @@
  */
 
 get_header();
+
+// Contact Page Schema
+$contact_schema = array(
+    '@context' => 'https://schema.org',
+    '@type' => 'ContactPage',
+    'name' => 'Kontakt - Pokrovce.pl',
+    'description' => 'Skontaktuj się z nami. Odpowiadamy na wiadomości w ciągu 24 godzin w dni robocze.',
+    'url' => get_permalink(),
+    'mainEntity' => array(
+        '@type' => 'LocalBusiness',
+        'name' => 'Pokrovce.pl',
+        'description' => 'Polski sklep z pokrowcami na krzesła skandynawskie',
+        'url' => home_url('/'),
+        'telephone' => '+48 661 962 732',
+        'email' => 'kontakt@pokrovce.pl',
+        'address' => array(
+            '@type' => 'PostalAddress',
+            'addressRegion' => 'Wielkopolska',
+            'addressCountry' => 'PL'
+        ),
+        'openingHoursSpecification' => array(
+            '@type' => 'OpeningHoursSpecification',
+            'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'),
+            'opens' => '09:00',
+            'closes' => '17:00'
+        ),
+        'contactPoint' => array(
+            '@type' => 'ContactPoint',
+            'telephone' => '+48 661 962 732',
+            'email' => 'kontakt@pokrovce.pl',
+            'contactType' => 'customer service',
+            'availableLanguage' => 'Polish',
+            'hoursAvailable' => array(
+                '@type' => 'OpeningHoursSpecification',
+                'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'),
+                'opens' => '09:00',
+                'closes' => '17:00'
+            )
+        )
+    )
+);
 ?>
+
+<script type="application/ld+json">
+<?php echo wp_json_encode($contact_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>
+</script>
 
 <main id="primary" class="site-main pt-25 lg:pt-15 pb-15">
 
     <!-- Hero section -->
     <section class="contact-hero mb-10">
         <div class="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
+            <?php
+            // RankMath Breadcrumbs
+            if (function_exists('rank_math_the_breadcrumbs')) {
+                echo '<div class="mb-8">';
+                rank_math_the_breadcrumbs();
+                echo '</div>';
+            }
+            ?>
+
             <div class="text-center max-w-[600px] mx-auto">
                 <span class="inline-flex items-center gap-2.5 font-medium text-dark mb-3 justify-center">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +113,7 @@ get_header();
                 </a>
 
                 <!-- Phone card -->
-                <a href="tel:+48123456789"
+                <a href="tel:+48661962732"
                     class="contact-card group bg-white rounded-xl shadow-1 p-6 border border-gray-3 hover:shadow-2 hover:border-[#E67E22]/30 transition-all duration-300 text-center">
                     <div
                         class="flex items-center justify-center w-14 h-14 bg-[#E67E22]/10 rounded-xl mx-auto mb-4 group-hover:bg-[#E67E22] transition-colors duration-300">
@@ -156,25 +210,36 @@ get_header();
         </div>
     </section>
 
-    <!-- Map section (optional) -->
-    <section class="contact-map mt-15">
+    <!-- Location section -->
+    <section class="contact-location mt-15">
         <div class="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
-            <div class="bg-gray-1 rounded-2xl p-8 text-center">
-                <div class="flex items-center justify-center w-16 h-16 bg-[#E67E22]/10 rounded-full mx-auto mb-4">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z"
-                            stroke="#E67E22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path
-                            d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z"
-                            stroke="#E67E22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+            <div
+                class="bg-gradient-to-r from-[#E67E22]/10 to-[#E67E22]/5 rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden">
+                <!-- Decorative circles -->
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-[#E67E22]/10 rounded-full -translate-y-1/2 translate-x-1/2">
                 </div>
-                <h3 class="font-semibold text-xl text-dark mb-2">Wysyłamy z Wielkopolski</h3>
-                <p class="text-dark-3 max-w-[500px] mx-auto">
-                    Nasz magazyn znajduje się w Wielkopolsce, dzięki czemu paczki docierają do Ciebie szybko i
-                    bezpiecznie. Współpracujemy z InPost, DPD i DHL.
-                </p>
+                <div
+                    class="absolute bottom-0 left-0 w-48 h-48 bg-[#E67E22]/5 rounded-full translate-y-1/2 -translate-x-1/2">
+                </div>
+
+                <div class="relative z-10">
+                    <div class="flex items-center justify-center w-14 h-14 bg-[#E67E22] rounded-full mx-auto mb-4">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h2 class="font-semibold text-xl xl:text-heading-5 text-dark mb-3">Wysyłamy z Wielkopolski</h2>
+                    <p class="text-dark-3 max-w-[500px] mx-auto leading-relaxed">
+                        Nasz magazyn znajduje się w Wielkopolsce, dzięki czemu paczki docierają do Ciebie szybko i
+                        bezpiecznie.Wysyłamy z InPost.
+                    </p>
+                </div>
             </div>
         </div>
     </section>

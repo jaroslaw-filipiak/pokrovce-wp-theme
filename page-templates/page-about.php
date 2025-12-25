@@ -9,13 +9,72 @@
  */
 
 get_header();
+
+// Organization Schema for About page
+$organization_schema = array(
+    '@context' => 'https://schema.org',
+    '@type' => 'Organization',
+    '@id' => home_url('/') . '#organization',
+    'name' => 'Pokrovce.pl',
+    'url' => home_url('/'),
+    'logo' => array(
+        '@type' => 'ImageObject',
+        'url' => get_template_directory_uri() . '/public/pokrovce-logo.svg',
+        'width' => 200,
+        'height' => 50
+    ),
+    'description' => 'Polski sklep specjalizujący się w sprzedaży wysokiej jakości pokrowców na krzesła skandynawskie. Pomagamy odświeżać wnętrza w prosty, ekonomiczny i ekologiczny sposób.',
+    'slogan' => 'Odśwież wnętrze bez wymiany mebli',
+    'foundingLocation' => array(
+        '@type' => 'Place',
+        'address' => array(
+            '@type' => 'PostalAddress',
+            'addressRegion' => 'Wielkopolska',
+            'addressCountry' => 'PL'
+        )
+    ),
+    'areaServed' => array(
+        '@type' => 'Country',
+        'name' => 'Polska'
+    ),
+    'contactPoint' => array(
+        '@type' => 'ContactPoint',
+        'telephone' => '+48 661 962 732',
+        'contactType' => 'customer service',
+        'availableLanguage' => 'Polish',
+        'areaServed' => 'PL'
+    ),
+    'sameAs' => array(
+        // Add social media URLs here when available
+        'https://www.facebook.com/people/Pokrovce/61577915450519',
+        // 'https://www.instagram.com/pokrovce',
+    )
+);
+
+// Remove empty sameAs array
+if (empty($organization_schema['sameAs'])) {
+    unset($organization_schema['sameAs']);
+}
 ?>
+
+<script type="application/ld+json">
+<?php echo wp_json_encode($organization_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>
+</script>
 
 <main id="primary" class="site-main pt-25 lg:pt-15 pb-15">
 
     <!-- Hero section -->
     <section class="about-hero mb-15">
         <div class="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
+            <?php
+            // RankMath Breadcrumbs (if enabled in RankMath settings)
+            if (function_exists('rank_math_the_breadcrumbs')) {
+                echo '<div class="mb-8">';
+                rank_math_the_breadcrumbs();
+                echo '</div>';
+            }
+            ?>
+
             <div class="text-center max-w-[700px] mx-auto">
                 <span class="inline-flex items-center gap-2.5 font-medium text-dark mb-3 justify-center">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -158,33 +217,146 @@ get_header();
     </section>
 
     <!-- Stats section -->
+    <?php
+    // Get real stats from WooCommerce (cached for 1 hour)
+    $cached_stats = get_transient('pokrovce_about_stats');
+    
+    if (false === $cached_stats) {
+        $total_customers = 0;
+        $total_products_sold = 0;
+
+        if (class_exists('WooCommerce')) {
+            // Count unique customers from completed orders
+            $customer_orders = wc_get_orders(array(
+                'status' => array('completed', 'processing'),
+                'limit' => -1,
+                'return' => 'ids',
+            ));
+            
+            $unique_emails = array();
+            foreach ($customer_orders as $order_id) {
+                $order = wc_get_order($order_id);
+                if ($order) {
+                    $email = $order->get_billing_email();
+                    if ($email && !in_array($email, $unique_emails)) {
+                        $unique_emails[] = $email;
+                    }
+                }
+            }
+            $total_customers = count($unique_emails);
+
+            // Count total products sold
+            global $wpdb;
+            $total_products_sold = $wpdb->get_var("
+                SELECT SUM(meta.meta_value) 
+                FROM {$wpdb->prefix}woocommerce_order_items AS items
+                INNER JOIN {$wpdb->prefix}woocommerce_order_itemmeta AS meta 
+                    ON items.order_item_id = meta.order_item_id
+                INNER JOIN {$wpdb->posts} AS posts 
+                    ON items.order_id = posts.ID
+                WHERE meta.meta_key = '_qty'
+                AND items.order_item_type = 'line_item'
+                AND posts.post_status IN ('wc-completed', 'wc-processing')
+            ");
+            $total_products_sold = (int) $total_products_sold;
+        }
+
+        // Cache stats for 1 hour
+        $cached_stats = array(
+            'customers' => $total_customers,
+            'products' => $total_products_sold,
+        );
+        set_transient('pokrovce_about_stats', $cached_stats, HOUR_IN_SECONDS);
+    }
+
+    // Minimum values for display
+    $display_products = max(100, $cached_stats['products']);
+    $display_customers = max(10, $cached_stats['customers']);
+    ?>
     <section class="about-stats mb-15">
         <div class="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
-            <div class="bg-dark rounded-2xl p-8 sm:p-12">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <div class="stat-item text-center" data-count="500">
-                        <div class="text-heading-4 xl:text-heading-3 font-bold text-[#E67E22] mb-2">
-                            <span class="stat-number">500</span>+
+            <div
+                class="bg-gradient-to-r from-[#E67E22]/10 to-[#E67E22]/5 rounded-2xl p-8 sm:p-12 relative overflow-hidden">
+                <!-- Decorative circles -->
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-[#E67E22]/10 rounded-full -translate-y-1/2 translate-x-1/2">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-48 h-48 bg-[#E67E22]/5 rounded-full translate-y-1/2 -translate-x-1/2">
+                </div>
+
+                <div class="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="stat-item text-center" data-count="<?php echo esc_attr($display_customers); ?>">
+                        <div class="flex items-center justify-center w-14 h-14 bg-[#E67E22] rounded-full mx-auto mb-3">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M16 3.13C16.8604 3.3503 17.623 3.8507 18.1676 4.5523C18.7122 5.2539 19.0078 6.1168 19.0078 7.005C19.0078 7.8932 18.7122 8.7561 18.1676 9.4577C17.623 10.1593 16.8604 10.6597 16 10.88"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
                         </div>
-                        <p class="text-white/80">Zadowolonych klientów</p>
+                        <div class="text-heading-4 xl:text-heading-3 font-bold text-dark mb-1">
+                            <span class="stat-number"><?php echo esc_html($display_customers); ?></span>+
+                        </div>
+                        <p class="text-dark-4">Zadowolonych klientów</p>
                     </div>
-                    <div class="stat-item text-center" data-count="1500">
-                        <div class="text-heading-4 xl:text-heading-3 font-bold text-[#E67E22] mb-2">
-                            <span class="stat-number">1500</span>+
+                    <div class="stat-item text-center" data-count="<?php echo esc_attr($display_products); ?>">
+                        <div class="flex items-center justify-center w-14 h-14 bg-[#E67E22] rounded-full mx-auto mb-3">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M3 6H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
                         </div>
-                        <p class="text-white/80">Sprzedanych pokrowców</p>
+                        <div class="text-heading-4 xl:text-heading-3 font-bold text-dark mb-1">
+                            <span class="stat-number"><?php echo esc_html($display_products); ?></span>+
+                        </div>
+                        <p class="text-dark-4">Sprzedanych pokrowców</p>
                     </div>
                     <div class="stat-item text-center" data-count="24">
-                        <div class="text-heading-4 xl:text-heading-3 font-bold text-[#E67E22] mb-2">
+                        <div class="flex items-center justify-center w-14 h-14 bg-[#E67E22] rounded-full mx-auto mb-3">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12 6V12L16 14" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="text-heading-4 xl:text-heading-3 font-bold text-dark mb-1">
                             <span class="stat-number">24</span>h
                         </div>
-                        <p class="text-white/80">Czas wysyłki</p>
+                        <p class="text-dark-4">Czas wysyłki</p>
                     </div>
                     <div class="stat-item text-center" data-count="98">
-                        <div class="text-heading-4 xl:text-heading-3 font-bold text-[#E67E22] mb-2">
+                        <div class="flex items-center justify-center w-14 h-14 bg-[#E67E22] rounded-full mx-auto mb-3">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="text-heading-4 xl:text-heading-3 font-bold text-dark mb-1">
                             <span class="stat-number">98</span>%
                         </div>
-                        <p class="text-white/80">Pozytywnych opinii</p>
+                        <p class="text-dark-4">Pozytywnych opinii</p>
                     </div>
                 </div>
             </div>
@@ -225,11 +397,11 @@ get_header();
                 </div>
 
                 <div class="value-item text-center p-6">
-                    <div class="flex items-center justify-center w-16 h-16 bg-blue/10 rounded-full mx-auto mb-4">
+                    <div class="flex items-center justify-center w-16 h-16 bg-[#E67E22]/10 rounded-full mx-auto mb-4">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M12 2L14.09 8.26L21 9.27L16 14.14L17.18 21.02L12 18.77L6.82 21.02L8 14.14L3 9.27L9.91 8.26L12 2Z"
-                                stroke="#3C50E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                stroke="#E67E22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </div>
                     <h3 class="font-semibold text-dark mb-2">Jakość</h3>
@@ -276,8 +448,8 @@ get_header();
     <section class="about-cta">
         <div class="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
             <div
-                class="bg-gradient-to-r from-dark to-dark-2 rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden">
-                <!-- Background decoration -->
+                class="bg-gradient-to-r from-[#E67E22]/10 to-[#E67E22]/5 rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden">
+                <!-- Decorative circles -->
                 <div
                     class="absolute top-0 right-0 w-64 h-64 bg-[#E67E22]/10 rounded-full -translate-y-1/2 translate-x-1/2">
                 </div>
@@ -286,10 +458,17 @@ get_header();
                 </div>
 
                 <div class="relative z-10">
-                    <h2 class="font-semibold text-xl xl:text-heading-5 text-white mb-3">
+                    <div class="flex items-center justify-center w-14 h-14 bg-[#E67E22] rounded-full mx-auto mb-4">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h2 class="font-semibold text-xl xl:text-heading-5 text-dark mb-3">
                         Masz pytania? Chętnie pomożemy!
                     </h2>
-                    <p class="text-white/70 mb-6 max-w-[500px] mx-auto">
+                    <p class="text-dark-3 mb-6 max-w-[500px] mx-auto">
                         Skontaktuj się z nami - odpowiadamy w ciągu 24 godzin w dni robocze.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -307,7 +486,7 @@ get_header();
                             Napisz do nas
                         </a>
                         <a href="<?php echo esc_url(home_url('/faq')); ?>"
-                            class="inline-flex items-center justify-center gap-2 font-medium text-white bg-white/10 border border-white/20 py-3 px-7 rounded-lg ease-out duration-200 hover:bg-white/20">
+                            class="inline-flex items-center justify-center gap-2 font-medium text-dark bg-white border border-gray-3 py-3 px-7 rounded-lg ease-out duration-200 hover:bg-gray-1">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
