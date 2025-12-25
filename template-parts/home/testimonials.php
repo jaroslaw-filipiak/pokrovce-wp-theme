@@ -37,9 +37,9 @@ $testimonials = array(
             <div class="mb-10 flex items-center justify-between">
                 <div>
 
-                    <h3 class="font-semibold text-xl xl:text-heading-5 text-dark">
+                    <h2 class="font-semibold text-xl xl:text-heading-5 text-dark">
                         <?php esc_html_e( 'Ostatnie opinie o naszych produktach', 'pokrovce' ); ?>
-                    </h3>
+                    </h2>
                 </div>
 
                 <div class="flex items-center gap-3">
@@ -82,11 +82,11 @@ $testimonials = array(
                         <p class="text-dark mb-6"><?php echo esc_html( $testimonial['content'] ); ?></p>
 
                         <div class="flex items-center gap-3">
-
                             <div>
-                                <h4 class="font-medium text-dark"><?php echo esc_html( $testimonial['name'] ); ?></h4>
-                                <p class="text-custom-sm text-dark-4"><?php echo esc_html( $testimonial['role'] ); ?>
-                                </p>
+                                <p class="font-medium text-dark"><?php echo esc_html( $testimonial['name'] ); ?></p>
+                                <?php if ( ! empty( $testimonial['role'] ) ) : ?>
+                                <p class="text-custom-sm text-dark-4"><?php echo esc_html( $testimonial['role'] ); ?></p>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

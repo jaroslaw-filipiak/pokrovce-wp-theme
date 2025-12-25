@@ -220,7 +220,7 @@ input[type='search']::-webkit-search-results-decoration {
 }
 
 .hero-carousel .swiper-pagination-bullet-active {
-  @apply !w-5.5 !bg-blue;
+  @apply !w-5.5 !bg-orange;
 }
 
 .common-carousel .swiper-button-next:after,
@@ -230,7 +230,7 @@ input[type='search']::-webkit-search-results-decoration {
 
 .common-carousel .swiper-button-next,
 .common-carousel .swiper-button-prev {
-  @apply !static h-9 w-9 rounded-lg bg-white text-dark border border-gray-3 m-0 ease-out duration-200 hover:bg-blue hover:text-white hover:border-blue;
+  @apply !static h-9 w-9 rounded-lg bg-white text-dark border border-gray-3 m-0 ease-out duration-200 hover:bg-orange hover:text-white hover:border-orange;
 }
 
 .common-carousel .swiper-button-next svg,

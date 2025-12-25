@@ -52,10 +52,10 @@ $slides = array(
                         </span>
                     </div>
 
-                    <h1 class="font-semibold text-white text-xl sm:text-3xl mb-3">
+                    <p class="font-semibold text-white text-xl sm:text-3xl mb-3">
                         <a
                             href="<?php echo esc_url( $slide['link'] ); ?>"><?php echo esc_html( $slide['title'] ); ?></a>
-                    </h1>
+                    </p>
 
                     <p class="text-white/90"><?php echo esc_html( $slide['description'] ); ?></p>
 
