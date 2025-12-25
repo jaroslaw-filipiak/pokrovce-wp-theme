@@ -42,10 +42,12 @@
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.3s ease-in-out;
+  @apply pt-0 transition-all duration-200;
 }
 
 .faq-item.is-open .faq-content {
   grid-template-rows: 1fr;
+  @apply pt-3 transition-all duration-200;
 }
 
 /* FAQ content inner - the grid child */
