@@ -20,16 +20,14 @@
                     <div class="w-full relative rounded-[10px] bg-white p-4 sm:p-7.5">
                         <div class="flex items-center gap-14">
                             <div>
-                                <h2 class="max-w-[153px] font-semibold text-dark text-xl mb-20">
-                                    <a href="#">Wysyłka tego samego dnia</a>
-                                </h2>
+                                <h3 class="max-w-[353px] font-semibold text-dark text-xl mb-20">
+                                    Wysyłka tego samego dnia
+                                </h3>
 
                                 <div>
-                                    <p class="font-medium text-dark-4 text-custom-sm mb-1.5">Kurier lub paczkomat</p>
-                                    <span class="flex items-center gap-3 hidden">
-                                        <span class="font-medium text-heading-5 text-red">$699</span>
-                                        <span class="font-medium text-2xl text-dark-4 line-through">$999</span>
-                                    </span>
+                                    <h4 class="font-medium text-dark-4 text-custom-sm mb-1.5">Kurier lub paczkomat.
+                                        Zamówienia złożone do 14:00 realizowane są tego samego dnia.</h4>
+
                                 </div>
                             </div>
                         </div>

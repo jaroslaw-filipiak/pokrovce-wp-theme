@@ -9,9 +9,26 @@ $slides = array(
     array(
         'discount'    => '30%',
         'title'       => 'A może kawa?',
-        'description' => 'Pokrowce w kolorze coffee, teraz w promocji - 30%!, Świetna okazja!',
+        'description' => 'Pokrowce w kolorze coffee – ciepły odcień, który pasuje do każdego wnętrza. Teraz w promocji -30%!',
         'image'       => get_template_directory_uri() . '/public/images/banner-coffee.avif',
-        'link'        => '#',
+        'link'        => '/produkt/pokrowiec-na-krzeslo-skandynawskie-coffee-kawa/',
+        'btn_color'   => 'bg-[#513a2c] hover:bg-[#513a2c]/80',
+    ),
+    array(
+        'discount'    => '30%',
+        'title'       => 'Mocna czerwień',
+        'description' => 'Pokrowce w kolorze czerwonym. Teraz w promocji -30%!',
+        'image'       => get_template_directory_uri() . '/public/images/banner-red.avif',
+        'link'        => '/produkt/pokrowiec-na-krzeslo-skandynawskie-wine-red-wino/',
+        'btn_color'   => 'bg-[#1a1a1a] hover:bg-[#333333]',
+    ),
+    array(
+        'discount'    => '30%',
+        'title'       => 'Butelkowa zieleń',
+        'description' => 'Pokrowce w kolorze zielonym. Teraz w promocji -30%!',
+        'image'       => get_template_directory_uri() . '/public/images/banner-green.avif',
+        'link'        => '/produkt/pokrowiec-na-krzeslo-skandynawskie-dark-green-butelkowa-ciemna-zielen/',
+        'btn_color'   => 'bg-[#1a1a1a] hover:bg-[#333333]',
     ),
    
 );
@@ -43,7 +60,7 @@ $slides = array(
                     <p class="text-white/90"><?php echo esc_html( $slide['description'] ); ?></p>
 
                     <a href="<?php echo esc_url( $slide['link'] ); ?>"
-                        class="inline-flex font-medium text-white text-custom-sm rounded-md bg-[#513a2c] py-3 px-9 ease-out duration-200 hover:bg-[#513a2c]/80 transition-all duration-200 mt-10">
+                        class="inline-flex font-medium text-white text-custom-sm rounded-md <?php echo esc_attr( $slide['btn_color'] ); ?> py-3 px-9 ease-out duration-200 transition-all duration-200 mt-10">
                         <span class="transition-all duration-200">
                             <?php esc_html_e( 'Kup teraz', 'pokrovce' ); ?>
                         </span>
