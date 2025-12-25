@@ -9,15 +9,129 @@
  */
 
 get_header();
+
+// FAQ Schema data
+$faq_items = array(
+    // Produkty i rozmiary
+    array(
+        'question' => 'Jak dobrać odpowiedni rozmiar pokrowca do mojego krzesła?',
+        'answer' => 'Aby dobrać odpowiedni rozmiar, zmierz szerokość i głębokość siedziska oraz wysokość oparcia krzesła. W opisie każdego produktu znajdziesz dokładne wymiary. Nasze pokrowce są elastyczne i pasują do większości standardowych krzeseł. Jeśli masz wątpliwości, skontaktuj się z nami - chętnie pomożemy dobrać odpowiedni rozmiar.'
+    ),
+    array(
+        'question' => 'Czy pokrowce pasują do krzeseł skandynawskich?',
+        'answer' => 'Tak! Nasze pokrowce są zaprojektowane tak, aby pasowały do najpopularniejszych modeli krzeseł, w tym krzeseł skandynawskich z IKEA, BRW, Agata Meble czy Jysk. Elastyczny materiał i gumka w dolnej części zapewniają dobre dopasowanie do różnych kształtów.'
+    ),
+    array(
+        'question' => 'Z jakiego materiału wykonane są pokrowce?',
+        'answer' => 'Nasze pokrowce wykonane są z wysokiej jakości tkaniny welurowej lub elastycznego materiału typu spandex. Materiały są przyjemne w dotyku, wytrzymałe i łatwe w utrzymaniu czystości. Nie mechacą się i zachowują swój kolor nawet po wielu praniach.'
+    ),
+    array(
+        'question' => 'Czy pokrowce są wodoodporne?',
+        'answer' => 'Standardowe pokrowce welurowe nie są wodoodporne, ale oferujemy również wersje z powłoką wodoodporną, idealne do kuchni lub jadalni z dziećmi. Sprawdź kategorię "Pokrowce wodoodporne" w naszym sklepie.'
+    ),
+    // Zamówienia i płatności
+    array(
+        'question' => 'Jakie są dostępne metody płatności?',
+        'answer' => 'Akceptujemy płatności kartą (Visa, Mastercard), szybkie przelewy online (Przelewy24, PayU), BLIK. Możesz również zapłacić przy odbiorze (za pobraniem).'
+    ),
+    array(
+        'question' => 'Czy mogę zamówić pokrowce na fakturę VAT?',
+        'answer' => 'Tak, wystawiamy faktury VAT dla firm. Podczas składania zamówienia zaznacz opcję "Chcę otrzymać fakturę" i podaj dane firmy wraz z numerem NIP. Faktura zostanie wysłana na podany adres e-mail.'
+    ),
+    array(
+        'question' => 'Czy mogę zmienić lub anulować zamówienie?',
+        'answer' => 'Tak, możesz zmienić lub anulować zamówienie, o ile nie zostało jeszcze wysłane. Skontaktuj się z nami jak najszybciej telefonicznie lub mailowo. Po wysłaniu paczki jedyną opcją jest odmowa przyjęcia przesyłki lub zwrot towaru.'
+    ),
+    array(
+        'question' => 'Jaka jest minimalna wartość zamówienia?',
+        'answer' => 'Nie ma minimalnej wartości zamówienia - możesz zamówić nawet jeden pokrowiec. Przy zamówieniach powyżej 150 zł dostawa jest bezpłatna!'
+    ),
+    // Dostawa
+    array(
+        'question' => 'Jak długo trwa dostawa?',
+        'answer' => 'Zamówienia realizujemy w ciągu 1-2 dni roboczych. Dostawa kurierem (InPost) trwa 1-2 dni robocze. Paczkomaty InPost to zazwyczaj 1-2 dni. Łącznie od złożenia zamówienia do dostawy mija zwykle 2-4 dni robocze.'
+    ),
+    array(
+        'question' => 'Ile kosztuje dostawa?',
+        'answer' => 'Koszt dostawy zależy od aktualnych stawek przewoźników (np. InPost, DPD) oraz wybranej metody dostawy. Najnowsze ceny zobaczysz w koszyku przed finalizacją zamówienia. Przy zamówieniach powyżej określonej kwoty (obecnie 200 zł) dostawa jest bezpłatna – nie dotyczy przesyłek za pobraniem.'
+    ),
+    array(
+        'question' => 'Czy wysyłacie za granicę?',
+        'answer' => 'Tak, wysyłamy do wszystkich krajów Unii Europejskiej. Koszt wysyłki międzynarodowej zależy od kraju docelowego i wagi paczki. Skontaktuj się z nami, aby uzyskać dokładną wycenę.'
+    ),
+    array(
+        'question' => 'Jak mogę śledzić swoją przesyłkę?',
+        'answer' => 'Po wysłaniu zamówienia otrzymasz e-mail z numerem przesyłki i linkiem do śledzenia. Możesz też sprawdzić status zamówienia w swoim koncie klienta na naszej stronie.'
+    ),
+    // Zwroty i reklamacje
+    array(
+        'question' => 'Czy mogę zwrócić pokrowiec, jeśli nie pasuje?',
+        'answer' => 'Tak! Masz 14 dni na zwrot towaru bez podania przyczyny (zgodnie z prawem konsumenckim). Produkt musi być nieużywany, w oryginalnym opakowaniu. Koszt zwrotu pokrywa kupujący. Zwrot pieniędzy następuje w ciągu 14 dni od otrzymania przesyłki zwrotnej.'
+    ),
+    array(
+        'question' => 'Jak złożyć reklamację?',
+        'answer' => 'Reklamację można złożyć mailowo lub przez formularz kontaktowy. Opisz problem i dołącz zdjęcia wady. Rozpatrujemy reklamacje w ciągu 14 dni. Jeśli reklamacja zostanie uznana, oferujemy wymianę produktu na nowy lub zwrot pieniędzy.'
+    ),
+    array(
+        'question' => 'Co zrobić, jeśli otrzymam uszkodzoną przesyłkę?',
+        'answer' => 'Jeśli paczka jest wyraźnie uszkodzona, odmów jej przyjęcia. Jeśli zauważysz uszkodzenie po otwarciu, zrób zdjęcia i skontaktuj się z nami w ciągu 24 godzin. Wyślemy nowy produkt bezpłatnie.'
+    ),
+    // Pielęgnacja i pranie
+    array(
+        'question' => 'Jak prać pokrowce na krzesła?',
+        'answer' => 'Nasze pokrowce można prać w pralce w temperaturze do 30°C, w trybie delikatnym. Używaj łagodnego detergentu, unikaj wybielaczy. Pokrowce można suszyć w suszarce bębnowej w niskiej temperaturze lub rozłożyć na płasko/powiesić do wyschnięcia. Nie ma potrzeby prasowania - materiał się nie gniecie.'
+    ),
+    array(
+        'question' => 'Jak usunąć plamy z pokrowca?',
+        'answer' => 'Świeże plamy najlepiej usuwać natychmiast wilgotną ściereczką. Do uporczywych plam użyj delikatnego środka do czyszczenia tkanin. Unikaj szorowania - może to uszkodzić strukturę materiału. Po usunięciu plamy możesz wyprać cały pokrowiec.'
+    ),
+    array(
+        'question' => 'Czy pokrowce się mechacą?',
+        'answer' => 'Nasze pokrowce wykonane są z wysokiej jakości materiałów, które są odporne na mechacenie. Przy prawidłowej pielęgnacji (pranie w niskiej temperaturze, bez suszarki) zachowują swój wygląd przez długi czas.'
+    ),
+);
+
+// Build mainEntity array for schema
+$main_entity = array();
+foreach ($faq_items as $item) {
+    $main_entity[] = array(
+        '@type' => 'Question',
+        'name' => $item['question'],
+        'acceptedAnswer' => array(
+            '@type' => 'Answer',
+            'text' => $item['answer']
+        )
+    );
+}
+
+// FAQ Schema (BreadcrumbList is handled globally by RankMath)
+$faq_schema = array(
+    '@context' => 'https://schema.org',
+    '@type' => 'FAQPage',
+    'name' => 'FAQ - Najczęściej zadawane pytania o pokrowce na krzesła',
+    'description' => 'Znajdź odpowiedzi na pytania dotyczące pokrowców na krzesła: rozmiary, materiały, zamówienia, dostawa, zwroty i pielęgnacja.',
+    'url' => get_permalink(),
+    'inLanguage' => 'pl-PL',
+    'mainEntity' => $main_entity
+);
 ?>
 
-<!-- todo schema -->
+<script type="application/ld+json">
+<?php echo wp_json_encode($faq_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>
+</script>
 
 <main id="primary" class="site-main pt-25 lg:pt-15 pb-15">
 
     <div class="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
+        <?php
+        // RankMath Breadcrumbs (if enabled in RankMath settings)
+        if (function_exists('rank_math_the_breadcrumbs')) {
+            rank_math_the_breadcrumbs();
+        }
+        ?>
+
         <!-- section title -->
-        <div class="mb-10">
+        <div class="mb-8">
             <span class="flex items-center gap-2.5 font-medium text-dark mb-1.5">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -39,8 +153,60 @@ get_header();
             </p>
         </div>
 
+        <!-- Table of Contents -->
+        <nav class="bg-gray-1 rounded-lg p-5 mb-10" aria-label="Spis treści">
+            <p class="font-semibold text-dark mb-3">Przejdź do sekcji:</p>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
+                <li>
+                    <a href="#produkty-rozmiary"
+                        class="flex items-center gap-2 text-dark-4 hover:text-[#E67E22] transition-colors py-1">
+                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                        Produkty i rozmiary
+                    </a>
+                </li>
+                <li>
+                    <a href="#zamowienia-platnosci"
+                        class="flex items-center gap-2 text-dark-4 hover:text-[#E67E22] transition-colors py-1">
+                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                        Zamówienia i płatności
+                    </a>
+                </li>
+                <li>
+                    <a href="#dostawa"
+                        class="flex items-center gap-2 text-dark-4 hover:text-[#E67E22] transition-colors py-1">
+                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                        Dostawa
+                    </a>
+                </li>
+                <li>
+                    <a href="#zwroty-reklamacje"
+                        class="flex items-center gap-2 text-dark-4 hover:text-[#E67E22] transition-colors py-1">
+                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                        Zwroty i reklamacje
+                    </a>
+                </li>
+                <li>
+                    <a href="#pielegnacja"
+                        class="flex items-center gap-2 text-dark-4 hover:text-[#E67E22] transition-colors py-1">
+                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                        Pielęgnacja i pranie
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
         <!-- Sekcja: Produkty i rozmiary -->
-        <div class="mb-8">
+        <section id="produkty-rozmiary" class="mb-8 scroll-mt-24">
             <h2 class="font-semibold text-custom-lg text-dark mb-4 flex items-center gap-2">
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -49,7 +215,7 @@ get_header();
                 </svg>
                 Produkty i rozmiary
             </h2>
-            <section class="faq-list">
+            <div class="faq-list">
                 <div class="faq-item">
                     <h3>Jak dobrać odpowiedni rozmiar pokrowca do mojego krzesła?</h3>
                     <div class="faq-content">
@@ -91,11 +257,11 @@ get_header();
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
         <!-- Sekcja: Zamówienia i płatności -->
-        <div class="mb-8">
+        <section id="zamowienia-platnosci" class="mb-8 scroll-mt-24">
             <h2 class="font-semibold text-custom-lg text-dark mb-4 flex items-center gap-2">
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -105,7 +271,7 @@ get_header();
                 </svg>
                 Zamówienia i płatności
             </h2>
-            <section class="faq-list">
+            <div class="faq-list">
                 <div class="faq-item">
                     <h3>Jakie są dostępne metody płatności?</h3>
                     <div class="faq-content">
@@ -144,11 +310,11 @@ get_header();
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
         <!-- Sekcja: Dostawa -->
-        <div class="mb-8">
+        <section id="dostawa" class="mb-8 scroll-mt-24">
             <h2 class="font-semibold text-custom-lg text-dark mb-4 flex items-center gap-2">
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13.3333 2.5H2.5V12.5H13.3333V2.5Z" stroke="#E67E22" stroke-width="1.5"
@@ -164,7 +330,7 @@ get_header();
                 </svg>
                 Dostawa
             </h2>
-            <section class="faq-list">
+            <div class="faq-list">
                 <div class="faq-item">
                     <h3>Jak długo trwa dostawa?</h3>
                     <div class="faq-content">
@@ -205,11 +371,11 @@ get_header();
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
         <!-- Sekcja: Zwroty i reklamacje -->
-        <div class="mb-8">
+        <section id="zwroty-reklamacje" class="mb-8 scroll-mt-24">
             <h2 class="font-semibold text-custom-lg text-dark mb-4 flex items-center gap-2">
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.5 17.5L10 15M10 15L7.5 17.5M10 15V18.3333" stroke="#E67E22" stroke-width="1.5"
@@ -226,7 +392,7 @@ get_header();
                 </svg>
                 Zwroty i reklamacje
             </h2>
-            <section class="faq-list">
+            <div class="faq-list">
                 <div class="faq-item">
                     <h3>Czy mogę zwrócić pokrowiec, jeśli nie pasuje?</h3>
                     <div class="faq-content">
@@ -257,11 +423,11 @@ get_header();
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
         <!-- Sekcja: Pielęgnacja -->
-        <div class="mb-8">
+        <section id="pielegnacja" class="mb-8 scroll-mt-24">
             <h2 class="font-semibold text-custom-lg text-dark mb-4 flex items-center gap-2">
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -273,7 +439,7 @@ get_header();
                 </svg>
                 Pielęgnacja i pranie
             </h2>
-            <section class="faq-list">
+            <div class="faq-list">
                 <div class="faq-item">
                     <h3>Jak prać pokrowce na krzesła?</h3>
                     <div class="faq-content">
@@ -305,8 +471,8 @@ get_header();
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
         <!-- CTA -->
         <div class="bg-gray-1 rounded-xl p-6 sm:p-8 text-center mt-10">
