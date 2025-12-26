@@ -40,10 +40,10 @@
             <div class="max-w-[1170px] mx-auto px-4 sm:px-7.5 xl:px-0">
                 <!-- header top start -->
                 <div
-                    class="flex flex-col lg:flex-row gap-5 items-end lg:items-center xl:justify-between ease-out duration-200 py-6">
+                    class="flex flex-row items-center justify-between ease-out duration-200 py-6">
                     <!-- header top left -->
                     <div
-                        class="xl:w-auto flex-col sm:flex-row w-full flex sm:justify-between sm:items-center gap-5 sm:gap-10">
+                        class="flex items-center">
                         <a class="flex-shrink-0" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                             <svg width="121" height="28" viewBox="0 0 121 28" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -129,7 +129,7 @@
                     </div>
 
                     <!-- header top right -->
-                    <div class="flex w-full lg:w-auto items-center gap-7.5">
+                    <div class="flex items-center gap-5 lg:gap-7.5">
                         <div class="hidden xl:flex items-center gap-3.5">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -153,7 +153,7 @@
                         <!-- divider -->
                         <span class="hidden xl:block w-px h-7.5 bg-gray-4"></span>
 
-                        <div class="flex w-full lg:w-auto justify-between items-center gap-5">
+                        <div class="flex items-center gap-5">
                             <!-- moje konto + koszyk -->
                             <div class="items-center gap-5 flex">
                                 <?php if ( is_user_logged_in() ) : ?>
@@ -207,7 +207,7 @@
                                             </span>
                                         </span>
 
-                                        <div>
+                                        <div class="hidden lg:block">
                                             <span class="block text-2xs text-dark-4 uppercase">Koszyk</span>
                                             <p class="font-medium text-custom-sm text-dark cart-total">
                                                 <?php echo WC()->cart->get_cart_total(); ?>
