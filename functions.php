@@ -155,3 +155,19 @@ if ( class_exists( 'WooCommerce' ) ) {
 require get_template_directory() . '/inc/enqueue.php';
 
 add_filter('wpcf7_verify_nonce', '__return_false');
+
+/**
+ * Mobile menu fallback if no menu is assigned
+ */
+function pokrovce_mobile_menu_fallback() {
+	?>
+	<ul class="mobile-nav-menu flex flex-col gap-1">
+		<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Strona główna', 'pokrovce' ); ?></a></li>
+		<?php if ( class_exists( 'WooCommerce' ) ) : ?>
+		<li><a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"><?php esc_html_e( 'Sklep', 'pokrovce' ); ?></a></li>
+		<?php endif; ?>
+		<li><a href="<?php echo esc_url( home_url( '/o-nas/' ) ); ?>"><?php esc_html_e( 'O nas', 'pokrovce' ); ?></a></li>
+		<li><a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>"><?php esc_html_e( 'Kontakt', 'pokrovce' ); ?></a></li>
+	</ul>
+	<?php
+}

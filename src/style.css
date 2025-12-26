@@ -794,3 +794,116 @@ a.bg-dark {
   @apply inline-flex items-center gap-2 font-medium text-custom-sm py-2.5 px-5 rounded-md border border-gray-3 bg-gray-1 text-dark no-underline;
   @apply ease-out duration-200 hover:bg-dark hover:text-white hover:border-transparent;
 }
+
+/* ==========================================================================
+   Mobile Menu Styles
+   ========================================================================== */
+
+/* Hamburger Button */
+.hamburger {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.hamburger:hover {
+  background-color: #F6F7FB;
+}
+
+.hamburger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #414141;
+  border-radius: 2px;
+  transition: transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6),
+              opacity 0.2s ease,
+              background-color 0.2s ease;
+}
+
+.hamburger-line-1 {
+  transform: translateY(-6px);
+}
+
+.hamburger-line-2 {
+  transform: translateY(0);
+}
+
+.hamburger-line-3 {
+  transform: translateY(6px);
+}
+
+/* Hamburger to X animation */
+.hamburger.is-active .hamburger-line-1 {
+  transform: translateY(0) rotate(45deg);
+  background-color: #E67E22;
+}
+
+.hamburger.is-active .hamburger-line-2 {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.hamburger.is-active .hamburger-line-3 {
+  transform: translateY(-2px) rotate(-45deg);
+  background-color: #E67E22;
+}
+
+/* Mobile Menu Overlay */
+.mobile-overlay {
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  pointer-events: none;
+  visibility: hidden;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-overlay.is-visible {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* Mobile Menu Sidebar */
+#mobileMenu.is-open {
+  transform: translateX(0) !important;
+}
+
+/* Mobile navigation menu styling */
+.mobile-nav-menu {
+  @apply list-none m-0 p-0;
+}
+
+.mobile-nav-menu li {
+  @apply m-0 p-0;
+}
+
+.mobile-nav-menu li a {
+  @apply block py-3 px-4 text-dark font-medium rounded-lg transition-colors duration-200;
+}
+
+.mobile-nav-menu li a:hover {
+  @apply bg-gray-1 text-[#E67E22];
+}
+
+.mobile-nav-menu li.current-menu-item > a,
+.mobile-nav-menu li.current_page_item > a {
+  @apply bg-[#E67E22]/10 text-[#E67E22];
+}
+
+/* Mobile submenu */
+.mobile-nav-menu .sub-menu {
+  @apply list-none m-0 p-0 pl-4 mt-1;
+}
+
+.mobile-nav-menu .sub-menu li a {
+  @apply py-2 text-dark-3 text-custom-sm;
+}
+
+.mobile-nav-menu .sub-menu li a:hover {
+  @apply text-[#E67E22];
+}
