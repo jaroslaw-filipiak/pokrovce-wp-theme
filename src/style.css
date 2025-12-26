@@ -346,6 +346,52 @@ input[type='search']::-webkit-search-results-decoration {
   @apply inline-flex font-medium text-white bg-[#E67E22] py-2 px-5 rounded-full ease-out duration-200 hover:bg-[#E67E22]/80 no-underline;
 }
 
+/* ============================================
+   Sale Badge - EXACT copy from homepage: 
+   absolute top-4 left-4 bg-[#E67E22] text-white text-xs font-medium px-2 py-1 rounded z-20
+   ============================================ */
+.wc-block-grid__product-onsale,
+.wc-block-grid__product .onsale,
+.wc-block-components-product-sale-badge,
+.wc-block-components-product-sale-badge--sale,
+span.wc-block-components-product-sale-badge,
+.wp-block-woocommerce-product-collection .onsale,
+.wp-block-woocommerce-product-collection .wc-block-components-product-sale-badge,
+.wp-block-woocommerce-product-new .onsale,
+.wp-block-woocommerce-product-best-sellers .onsale,
+.wp-block-woocommerce-product-on-sale .onsale,
+.woocommerce-loop-product__sale-flash,
+.products .onsale,
+.product .onsale,
+li.product .onsale,
+ul.products .onsale,
+.woocommerce ul.products li.product .onsale,
+.wc-block-grid__product .wc-block-components-product-sale-badge {
+  position: absolute !important;
+  top: 16px !important;
+  left: 16px !important;
+  right: auto !important;
+  bottom: auto !important;
+  background-color: #E67E22 !important;
+  background: #E67E22 !important;
+  color: #fff !important;
+  border: none !important;
+  border-width: 0 !important;
+  border-radius: 4px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  padding: 4px 8px !important;
+  text-transform: none !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  z-index: 20 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Sale badge on single product page - different style */
 .content-single-product .onsale {
   @apply inline-flex bg-green text-white px-6 py-2 rounded-full absolute top-4 left-4 z-20;
 }
@@ -560,6 +606,143 @@ input[type='search']::-webkit-search-results-decoration {
   .product-card-actions {
     @apply translate-y-0;
   }
+}
+
+/* ==========================================================================
+   WooCommerce Product Loop - Native & Blocks
+   ========================================================================== */
+
+/* Product list container */
+ul.products,
+.woocommerce ul.products,
+.wc-block-grid__products {
+  @apply list-none p-0 m-0;
+}
+
+/* Single product in loop */
+ul.products li.product,
+.woocommerce ul.products li.product,
+.wc-block-grid__product {
+  @apply relative m-0 list-none;
+}
+
+/* Product image container */
+ul.products li.product .woocommerce-loop-product__link,
+.wc-block-grid__product-link {
+  @apply block no-underline;
+}
+
+ul.products li.product .attachment-woocommerce_thumbnail,
+ul.products li.product img,
+.wc-block-grid__product-image {
+  @apply rounded-lg mb-4;
+  background-color: #F6F7FB;
+}
+
+/* Image container - EXACT: relative overflow-hidden rounded-lg bg-[#F6F7FB] aspect-square mb-4 p-2 */
+.wc-block-grid__product-image,
+.wc-block-components-product-image {
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 8px !important;
+  background-color: #F6F7FB !important;
+  aspect-ratio: 1 / 1 !important;
+  margin-bottom: 16px !important;
+  padding: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.wc-block-grid__product-image img {
+  @apply max-w-full max-h-full object-contain;
+}
+
+/* Star rating */
+ul.products li.product .star-rating,
+.wc-block-grid__product-rating .star-rating {
+  @apply relative overflow-hidden mb-2;
+  font-size: 14px;
+  width: 70px;
+  height: 14px;
+  line-height: 1;
+}
+
+ul.products li.product .star-rating::before,
+.wc-block-grid__product-rating .star-rating::before {
+  content: '★★★★★';
+  letter-spacing: 0;
+  color: #DFE4EA;
+}
+
+ul.products li.product .star-rating span,
+.wc-block-grid__product-rating .star-rating span {
+  @apply absolute top-0 left-0 overflow-hidden whitespace-nowrap;
+}
+
+ul.products li.product .star-rating span::before,
+.wc-block-grid__product-rating .star-rating span::before {
+  content: '★★★★★';
+  letter-spacing: 0;
+  color: #FFA645;
+}
+
+/* Product title */
+ul.products li.product .woocommerce-loop-product__title,
+.wc-block-grid__product-title {
+  @apply font-medium text-dark mb-1.5 text-base;
+  transition: color 0.2s ease-out;
+}
+
+ul.products li.product .woocommerce-loop-product__link:hover .woocommerce-loop-product__title,
+.wc-block-grid__product-link:hover .wc-block-grid__product-title {
+  color: #E67E22;
+}
+
+/* Product price */
+ul.products li.product .price,
+.wc-block-grid__product-price {
+  @apply flex items-center gap-2 font-medium text-lg mb-2;
+}
+
+ul.products li.product .price ins,
+ul.products li.product .price > .woocommerce-Price-amount,
+.wc-block-grid__product-price ins,
+.wc-block-grid__product-price > .woocommerce-Price-amount {
+  @apply text-dark no-underline font-medium;
+}
+
+ul.products li.product .price del,
+.wc-block-grid__product-price del {
+  @apply text-dark-4 line-through font-normal text-base;
+}
+
+/* Add to cart button */
+ul.products li.product .button,
+ul.products li.product .add_to_cart_button,
+.wc-block-grid__product-add-to-cart .wp-block-button__link,
+.wc-block-grid__product-add-to-cart .add_to_cart_button {
+  @apply inline-flex font-medium py-2 px-5 no-underline mt-2;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: #E67E22 !important;
+  color: #fff !important;
+  transition: background-color 0.2s ease-out;
+}
+
+ul.products li.product .button:hover,
+ul.products li.product .add_to_cart_button:hover,
+.wc-block-grid__product-add-to-cart .wp-block-button__link:hover,
+.wc-block-grid__product-add-to-cart .add_to_cart_button:hover {
+  background-color: rgba(230, 126, 34, 0.8) !important;
+}
+
+/* View cart link after adding */
+ul.products li.product .added_to_cart,
+.wc-block-grid__product-add-to-cart .added_to_cart {
+  @apply inline-flex ml-2 font-medium no-underline hover:underline;
+  font-size: 14px;
+  color: #22AD5C;
 }
 
 /* Screen reader only text */
