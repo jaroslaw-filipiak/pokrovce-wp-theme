@@ -139,8 +139,21 @@ body.woocommerce-checkout .entry-header {
    Shipping Methods - Clean Design
    ============================================ */
 
+.wc-block-components-radio-control--highlight-checked
+  .wc-block-components-radio-control-accordion-option--checked-option-highlighted,
+.wc-block-components-radio-control--highlight-checked
+  label.wc-block-components-radio-control__option--checked-option-highlighted {
+  box-shadow: none;
+}
+
 .wc-block-components-shipping-rates-control__package {
   @apply mt-2;
+}
+
+/* opcja inpost paczkomat 24/7 druga kolumna */
+.wc-block-components-radio-control__label-group
+  .wc-block-components-radio-control__secondary-label {
+  flex: 0 !important;
 }
 
 /* Reset domyślnych stylów */
@@ -204,6 +217,15 @@ body.woocommerce-checkout .entry-header {
   background-repeat: no-repeat !important;
   border: none !important;
   box-shadow: none !important;
+}
+
+.wc-block-components-radio-control .wc-block-components-radio-control__input {
+  left: 0 !important;
+  top: 0 !important;
+}
+
+.wc-block-components-radio-control--highlight-checked:after {
+  border: none !important;
 }
 
 /* Layout container */
