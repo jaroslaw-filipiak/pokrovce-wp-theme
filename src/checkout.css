@@ -290,11 +290,16 @@ body.woocommerce-checkout .entry-header {
 }
 
 .wc-block-components-totals-item__label {
-  @apply text-sm text-dark-3;
+  @apply text-base text-dark-3;
 }
 
 .wc-block-components-totals-item__value {
-  @apply text-sm font-medium text-dark;
+  @apply text-base font-medium text-dark;
+}
+
+/* Placeholder wysyłki */
+.wc-block-components-shipping-placeholder__value {
+  @apply !text-base;
 }
 
 /* Suma całkowita */
@@ -309,7 +314,7 @@ body.woocommerce-checkout .entry-header {
 
 .wc-block-components-totals-footer-item .wc-block-components-totals-item__value,
 .wc-block-components-totals-footer-item-tax-value {
-  @apply text-lg font-semibold text-[#E67E22];
+  @apply !text-base font-semibold text-[#E67E22];
 }
 
 /* ============================================
