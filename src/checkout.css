@@ -17,14 +17,22 @@ body.woocommerce-checkout .entry-header {
   @apply !hidden;
 }
 
-/* Ukrycie pola wyboru kraju - sprzedajemy tylko do Polski */
+/* 
+ * Ukrycie pola wyboru kraju - sprzedajemy tylko do Polski.
+ * Używamy clip zamiast display:none żeby pole nadal działało dla WooCommerce.
+ */
 #billing_country_field,
 #shipping_country_field,
-.wc-block-components-country-input,
-[id*='billing-country'],
-[id*='shipping-country'],
 .wc-block-components-address-form__country {
-  @apply !hidden;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 /* Kontener główny */
@@ -128,19 +136,176 @@ body.woocommerce-checkout .entry-header {
 }
 
 /* ============================================
-   Shipping Methods
+   Shipping Methods - Clean Design
    ============================================ */
 
 .wc-block-components-shipping-rates-control__package {
   @apply mt-2;
 }
 
+/* Reset domyślnych stylów */
+.wc-block-components-shipping-rates-control .wc-block-components-radio-control {
+  @apply space-y-2;
+}
+
+/* Opcja wysyłki - box */
+.wc-block-components-shipping-rates-control
+  .wc-block-components-radio-control__option {
+  @apply flex items-center gap-4 py-4 px-5 border border-gray-3 rounded-lg cursor-pointer transition-all duration-200;
+}
+
+.wc-block-components-shipping-rates-control
+  .wc-block-components-radio-control__option:hover {
+  @apply border-[#E67E22]/50;
+}
+
+.wc-block-components-shipping-rates-control
+  .wc-block-components-radio-control__option-checked,
+.wc-block-components-shipping-rates-control
+  .wc-block-components-radio-control__option--checked-option-highlighted {
+  @apply border-[#E67E22] bg-[#E67E22]/5;
+}
+
+/* Radio input - pomarańczowe kółko z checkmark */
+.wc-block-components-shipping-rates-control
+  .wc-block-components-radio-control__input {
+  @apply flex-shrink-0 w-6 h-6 rounded-full cursor-pointer;
+  background-color: #e67e22 !important;
+  border: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+
+.wc-block-components-shipping-rates-control
+  .wc-block-components-radio-control__input::before,
+.wc-block-components-shipping-rates-control
+  .wc-block-components-radio-control__input::after {
+  background-color: transparent !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.wc-block-components-shipping-rates-control
+  .wc-block-components-radio-control__input:checked::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 12px !important;
+  height: 12px !important;
+  background-color: transparent !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Layout container */
+.wc-block-components-shipping-rates-control
+  .wc-block-components-radio-control__option-layout {
+  @apply flex-1 min-w-0;
+}
+
+/* Label group - flex row */
+.wc-block-components-shipping-rates-control
+  .wc-block-components-radio-control__label-group {
+  @apply flex items-center justify-between gap-4;
+}
+
+/* Nazwa metody + logo */
+.wc-block-components-shipping-rates-control
+  .wc-block-components-radio-control__label {
+  @apply flex items-center gap-3 text-base font-medium text-dark;
+}
+
+/* Cena */
+.wc-block-components-shipping-rates-control
+  .wc-block-components-radio-control__secondary-label {
+  @apply text-base font-semibold text-[#E67E22] whitespace-nowrap;
+}
+
+/* Darmowa wysyłka - zielony */
+.wc-block-checkout__shipping-option--free {
+  @apply text-green font-semibold;
+}
+
+/* InPost logo - oryginalne wymiary */
+.inpost_pl-block-shipping-method-meta-wrap {
+  @apply inline-flex items-center;
+}
+
+.inpost_pl_method_logo .inpost_icon {
+  height: 35px !important;
+  width: auto !important;
+  display: block !important;
+}
+
+/* Free shipping badge */
+.wc-block-components-shipping-rates-control
+  .wc-block-components-radio-control__secondary-label:has(
+    .wc-block-formatted-money-amount:empty
+  ),
+.wc-block-components-shipping-rates-control
+  .wc-block-components-radio-control__secondary-label
+  .wc-block-formatted-money-amount[data-price='0'] {
+  @apply text-green font-semibold;
+}
+
 /* ============================================
    Payment Methods
    ============================================ */
 
+/* Wymuszenie fontu Euclid Circular A na sekcji płatności */
+.wc-block-components-radio-control,
+.wc-block-components-radio-control *,
+.wc-block-components-radio-control-accordion-option,
+.wc-block-components-radio-control-accordion-option *,
+.wc-block-components-radio-control-accordion-content,
+.wc-block-components-radio-control-accordion-content *,
+.wcstripe-payment-element,
+.wc-stripe-payment-method-instruction,
+.wc-block-components-radio-control__label,
+.wc-block-components-radio-control__label span,
+.wc-block-components-radio-control__secondary-label,
+.wc-block-components-payment-method-label,
+.wc-block-components-payment-method-icons,
+.optimized-checkout-element,
+.optimized-checkout-element *,
+span.optimized-checkout-element,
+span.optimized-checkout-element span,
+.wc-block-components-radio-control__label.optimized-checkout-element,
+.wc-block-components-radio-control__label.optimized-checkout-element span,
+#radio-control-wc-payment-method-options-stripe__label,
+#radio-control-wc-payment-method-options-stripe__label span,
+.wc-block-components-radio-control-accordion-content.optimized-checkout-element,
+.wc-block-components-radio-control-accordion-content.optimized-checkout-element
+  * {
+  font-family: 'Euclid Circular A', sans-serif !important;
+}
+
 .wc-block-components-radio-control-accordion-content {
   @apply text-base text-dark-3 py-3 px-4 bg-gray-1 rounded-b-md -mt-2 mb-2;
+}
+
+/* Stripe payment method label */
+.wc-block-components-radio-control__label span,
+.wc-block-components-radio-control__label.optimized-checkout-element span,
+#radio-control-wc-payment-method-options-stripe__label span {
+  @apply !text-base;
+  font-family: 'Euclid Circular A', sans-serif !important;
+}
+
+/* Stripe instructions */
+.wc-stripe-payment-method-instruction,
+.wc-stripe-payment-method-instruction * {
+  @apply !text-sm !text-dark-3;
+  font-family: 'Euclid Circular A', sans-serif !important;
 }
 
 /* ============================================

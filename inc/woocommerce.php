@@ -206,59 +206,6 @@ if ( ! function_exists( 'pokrovce_woocommerce_header_cart' ) ) {
 }
 
 /**
- * Hide country field from checkout when selling only to Poland.
- * Convert the country field to a hidden input instead of removing it,
- * as WooCommerce requires this field internally for tax/shipping calculations.
- *
- * @param array $fields Checkout fields.
- * @return array Modified checkout fields.
- */
-function pokrovce_hide_country_field( $fields ) {
-	// Convert billing country to hidden field
-	if ( isset( $fields['billing']['billing_country'] ) ) {
-		$fields['billing']['billing_country']['type'] = 'hidden';
-		$fields['billing']['billing_country']['default'] = 'PL';
-		$fields['billing']['billing_country']['required'] = false;
-	}
-	
-	// Convert shipping country to hidden field
-	if ( isset( $fields['shipping']['shipping_country'] ) ) {
-		$fields['shipping']['shipping_country']['type'] = 'hidden';
-		$fields['shipping']['shipping_country']['default'] = 'PL';
-		$fields['shipping']['shipping_country']['required'] = false;
-	}
-	
-	return $fields;
-}
-add_filter( 'woocommerce_checkout_fields', 'pokrovce_hide_country_field', 999 );
-
-/**
- * Also hide country from billing/shipping fields directly.
- *
- * @param array $fields Address fields.
- * @return array Modified address fields.
- */
-function pokrovce_hide_billing_country( $fields ) {
-	if ( isset( $fields['billing_country'] ) ) {
-		$fields['billing_country']['type'] = 'hidden';
-		$fields['billing_country']['default'] = 'PL';
-		$fields['billing_country']['class'] = array( 'hidden' );
-	}
-	return $fields;
-}
-add_filter( 'woocommerce_billing_fields', 'pokrovce_hide_billing_country', 999 );
-
-function pokrovce_hide_shipping_country( $fields ) {
-	if ( isset( $fields['shipping_country'] ) ) {
-		$fields['shipping_country']['type'] = 'hidden';
-		$fields['shipping_country']['default'] = 'PL';
-		$fields['shipping_country']['class'] = array( 'hidden' );
-	}
-	return $fields;
-}
-add_filter( 'woocommerce_shipping_fields', 'pokrovce_hide_shipping_country', 999 );
-
-/**
  * Set default country to Poland.
  * This ensures all orders are processed with Poland as the country.
  *
@@ -272,7 +219,7 @@ add_filter( 'default_checkout_billing_country', 'pokrovce_default_checkout_count
 add_filter( 'default_checkout_shipping_country', 'pokrovce_default_checkout_country' );
 
 /**
- * Force customer country to Poland.
+ * Force customer country to Poland on checkout init.
  */
 function pokrovce_set_customer_country() {
 	if ( WC()->customer ) {
@@ -280,52 +227,68 @@ function pokrovce_set_customer_country() {
 		WC()->customer->set_shipping_country( 'PL' );
 	}
 }
-add_action( 'woocommerce_before_checkout_form', 'pokrovce_set_customer_country' );
+add_action( 'woocommerce_checkout_init', 'pokrovce_set_customer_country' );
+add_action( 'woocommerce_before_calculate_totals', 'pokrovce_set_customer_country' );
 
 /**
- * Limit selling countries to Poland only.
- * This affects both classic and block-based checkout.
+ * Make phone field required on checkout (classic checkout).
  *
- * @param array $countries List of countries.
- * @return array Modified list with only Poland.
+ * @param array $fields Checkout fields.
+ * @return array Modified checkout fields.
  */
-function pokrovce_limit_countries_to_poland( $countries ) {
-	return array( 'PL' => $countries['PL'] ?? 'Polska' );
+function pokrovce_require_phone_field( $fields ) {
+	if ( isset( $fields['billing']['billing_phone'] ) ) {
+		$fields['billing']['billing_phone']['required'] = true;
+	}
+	return $fields;
 }
-add_filter( 'woocommerce_countries', 'pokrovce_limit_countries_to_poland', 999 );
+add_filter( 'woocommerce_checkout_fields', 'pokrovce_require_phone_field' );
 
 /**
- * Set allowed countries for selling to Poland only.
+ * Also set phone as required in billing fields.
  *
- * @param array $countries Allowed countries.
- * @return array Only Poland.
+ * @param array $fields Billing fields.
+ * @return array Modified billing fields.
  */
-function pokrovce_allowed_countries( $countries ) {
-	return array( 'PL' => 'Polska' );
+function pokrovce_require_billing_phone( $fields ) {
+	if ( isset( $fields['billing_phone'] ) ) {
+		$fields['billing_phone']['required'] = true;
+	}
+	return $fields;
 }
-add_filter( 'woocommerce_countries_allowed_countries', 'pokrovce_allowed_countries', 999 );
-add_filter( 'woocommerce_countries_shipping_countries', 'pokrovce_allowed_countries', 999 );
+add_filter( 'woocommerce_billing_fields', 'pokrovce_require_billing_phone' );
 
 /**
- * Add inline CSS to hide country field in block checkout.
- * This is a fallback for block-based checkout where PHP filters may not work.
+ * Make phone field required for block-based checkout.
+ * This filter works with WooCommerce Blocks.
+ *
+ * @param array $fields Address fields schema.
+ * @return array Modified fields schema.
  */
-function pokrovce_hide_country_field_css() {
-	if ( is_checkout() ) {
-		?>
-<style>
-/* Hide country selector - selling only to Poland */
-#billing_country_field,
-#shipping_country_field,
-.wc-block-components-country-input,
-[id*="billing-country"],
-[id*="shipping-country"],
-.wc-block-components-address-form__country,
-.wc-block-components-address-form .wc-block-components-country-input {
-    display: none !important;
+function pokrovce_require_phone_block_checkout( $fields ) {
+	if ( isset( $fields['phone'] ) ) {
+		$fields['phone']['required'] = true;
+	}
+	return $fields;
 }
-</style>
-<?php
+add_filter( 'woocommerce_get_country_locale_default', function( $locale ) {
+	$locale['phone']['required'] = true;
+	return $locale;
+});
+
+/**
+ * Force phone to be required via checkout block settings.
+ */
+add_filter( '__experimental_woocommerce_blocks_checkout_update_order_from_request', function( $order, $request ) {
+	return $order;
+}, 10, 2 );
+
+/**
+ * Set phone as required in WooCommerce settings programmatically.
+ */
+function pokrovce_set_phone_required_option() {
+	if ( get_option( 'woocommerce_checkout_phone_field' ) !== 'required' ) {
+		update_option( 'woocommerce_checkout_phone_field', 'required' );
 	}
 }
-add_action( 'wp_head', 'pokrovce_hide_country_field_css', 999 );
+add_action( 'init', 'pokrovce_set_phone_required_option' );
