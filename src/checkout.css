@@ -286,7 +286,7 @@ body.woocommerce-checkout .entry-header {
 }
 
 .wc-block-components-totals-item {
-  @apply flex justify-between items-center py-2;
+  @apply flex justify-between items-center py-2 !mt-0;
 }
 
 .wc-block-components-totals-item__label {
@@ -299,7 +299,7 @@ body.woocommerce-checkout .entry-header {
 
 /* Suma całkowita */
 .wc-block-components-totals-footer-item {
-  @apply border-t border-gray-3 pt-3 mt-2 pb-4;
+  @apply pt-3 mt-2 pb-4;
 }
 
 .wc-block-components-totals-footer-item
