@@ -4,8 +4,3 @@
  */
 
 import './checkout.css';
-
-
-
-
-

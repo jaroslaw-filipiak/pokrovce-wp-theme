@@ -490,9 +490,17 @@ ul.products .onsale,
     @apply mb-0;
   }
 
-  /* Images */
-  img {
+  /* Images - ale nie w WooCommerce */
+  img:not(.wc-block-components-product-image img):not(.wc-block-components-order-summary-item__image img):not(.wc-block-cart-item__image img):not(.product-thumbnail img) {
     @apply rounded-lg my-7;
+  }
+
+  /* Reset margin dla WooCommerce images */
+  .wc-block-components-product-image img,
+  .wc-block-components-order-summary-item__image img,
+  .wc-block-cart-item__image img,
+  .product-thumbnail img {
+    @apply !m-0 !my-0;
   }
 
   /* Tables */

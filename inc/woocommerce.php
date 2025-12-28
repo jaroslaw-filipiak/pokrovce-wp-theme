@@ -204,3 +204,128 @@ if ( ! function_exists( 'pokrovce_woocommerce_header_cart' ) ) {
 <?php
 	}
 }
+
+/**
+ * Hide country field from checkout when selling only to Poland.
+ * Convert the country field to a hidden input instead of removing it,
+ * as WooCommerce requires this field internally for tax/shipping calculations.
+ *
+ * @param array $fields Checkout fields.
+ * @return array Modified checkout fields.
+ */
+function pokrovce_hide_country_field( $fields ) {
+	// Convert billing country to hidden field
+	if ( isset( $fields['billing']['billing_country'] ) ) {
+		$fields['billing']['billing_country']['type'] = 'hidden';
+		$fields['billing']['billing_country']['default'] = 'PL';
+		$fields['billing']['billing_country']['required'] = false;
+	}
+	
+	// Convert shipping country to hidden field
+	if ( isset( $fields['shipping']['shipping_country'] ) ) {
+		$fields['shipping']['shipping_country']['type'] = 'hidden';
+		$fields['shipping']['shipping_country']['default'] = 'PL';
+		$fields['shipping']['shipping_country']['required'] = false;
+	}
+	
+	return $fields;
+}
+add_filter( 'woocommerce_checkout_fields', 'pokrovce_hide_country_field', 999 );
+
+/**
+ * Also hide country from billing/shipping fields directly.
+ *
+ * @param array $fields Address fields.
+ * @return array Modified address fields.
+ */
+function pokrovce_hide_billing_country( $fields ) {
+	if ( isset( $fields['billing_country'] ) ) {
+		$fields['billing_country']['type'] = 'hidden';
+		$fields['billing_country']['default'] = 'PL';
+		$fields['billing_country']['class'] = array( 'hidden' );
+	}
+	return $fields;
+}
+add_filter( 'woocommerce_billing_fields', 'pokrovce_hide_billing_country', 999 );
+
+function pokrovce_hide_shipping_country( $fields ) {
+	if ( isset( $fields['shipping_country'] ) ) {
+		$fields['shipping_country']['type'] = 'hidden';
+		$fields['shipping_country']['default'] = 'PL';
+		$fields['shipping_country']['class'] = array( 'hidden' );
+	}
+	return $fields;
+}
+add_filter( 'woocommerce_shipping_fields', 'pokrovce_hide_shipping_country', 999 );
+
+/**
+ * Set default country to Poland.
+ * This ensures all orders are processed with Poland as the country.
+ *
+ * @param string $country Default country code.
+ * @return string Poland country code.
+ */
+function pokrovce_default_checkout_country( $country ) {
+	return 'PL';
+}
+add_filter( 'default_checkout_billing_country', 'pokrovce_default_checkout_country' );
+add_filter( 'default_checkout_shipping_country', 'pokrovce_default_checkout_country' );
+
+/**
+ * Force customer country to Poland.
+ */
+function pokrovce_set_customer_country() {
+	if ( WC()->customer ) {
+		WC()->customer->set_billing_country( 'PL' );
+		WC()->customer->set_shipping_country( 'PL' );
+	}
+}
+add_action( 'woocommerce_before_checkout_form', 'pokrovce_set_customer_country' );
+
+/**
+ * Limit selling countries to Poland only.
+ * This affects both classic and block-based checkout.
+ *
+ * @param array $countries List of countries.
+ * @return array Modified list with only Poland.
+ */
+function pokrovce_limit_countries_to_poland( $countries ) {
+	return array( 'PL' => $countries['PL'] ?? 'Polska' );
+}
+add_filter( 'woocommerce_countries', 'pokrovce_limit_countries_to_poland', 999 );
+
+/**
+ * Set allowed countries for selling to Poland only.
+ *
+ * @param array $countries Allowed countries.
+ * @return array Only Poland.
+ */
+function pokrovce_allowed_countries( $countries ) {
+	return array( 'PL' => 'Polska' );
+}
+add_filter( 'woocommerce_countries_allowed_countries', 'pokrovce_allowed_countries', 999 );
+add_filter( 'woocommerce_countries_shipping_countries', 'pokrovce_allowed_countries', 999 );
+
+/**
+ * Add inline CSS to hide country field in block checkout.
+ * This is a fallback for block-based checkout where PHP filters may not work.
+ */
+function pokrovce_hide_country_field_css() {
+	if ( is_checkout() ) {
+		?>
+<style>
+/* Hide country selector - selling only to Poland */
+#billing_country_field,
+#shipping_country_field,
+.wc-block-components-country-input,
+[id*="billing-country"],
+[id*="shipping-country"],
+.wc-block-components-address-form__country,
+.wc-block-components-address-form .wc-block-components-country-input {
+    display: none !important;
+}
+</style>
+<?php
+	}
+}
+add_action( 'wp_head', 'pokrovce_hide_country_field_css', 999 );

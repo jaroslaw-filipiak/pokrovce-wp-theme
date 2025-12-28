@@ -17,6 +17,16 @@ body.woocommerce-checkout .entry-header {
   @apply !hidden;
 }
 
+/* Ukrycie pola wyboru kraju - sprzedajemy tylko do Polski */
+#billing_country_field,
+#shipping_country_field,
+.wc-block-components-country-input,
+[id*='billing-country'],
+[id*='shipping-country'],
+.wc-block-components-address-form__country {
+  @apply !hidden;
+}
+
 /* Kontener główny */
 .woocommerce-checkout .wp-block-woocommerce-checkout {
   @apply max-w-[1170px] mx-auto px-4 sm:px-7.5 xl:px-0 py-8 lg:py-12 xl:py-16;
@@ -138,99 +148,168 @@ body.woocommerce-checkout .entry-header {
    ============================================ */
 
 .wc-block-checkout__sidebar {
-  @apply bg-gray-1 rounded-lg p-6;
+  @apply bg-white border border-gray-3 rounded-lg overflow-hidden;
 }
 
 /* Tytuł podsumowania */
 .wc-block-components-checkout-order-summary__title {
-  @apply flex items-center justify-between py-4 !px-4 cursor-pointer !mt-0;
+  @apply flex items-center justify-between !py-4 !px-4 cursor-pointer border-b border-gray-3 !m-0 bg-gray-1 !border-t-0;
 }
 
 .wc-block-components-checkout-order-summary__title-text {
-  @apply text-xl font-semibold text-dark;
+  @apply text-base font-semibold text-dark !mb-0;
 }
 
 .wc-block-components-checkout-order-summary__title-price {
-  @apply text-xl font-semibold text-[#E67E22];
+  @apply text-base font-semibold text-[#E67E22];
 }
 
-/* Produkty w podsumowaniu */
+.wc-block-components-checkout-order-summary__title-icon svg {
+  @apply w-5 h-5 text-dark-4;
+}
+
+/* Content container */
+.wc-block-components-checkout-order-summary__content {
+  @apply p-4;
+}
+
+/* Produkty w podsumowaniu - spójne z koszykiem */
 .wc-block-components-order-summary-item {
-  @apply flex gap-4 py-4 border-b border-gray-3;
+  @apply flex items-start gap-4 py-4 border-b border-gray-3;
 }
 
 .wc-block-components-order-summary-item:last-child {
   @apply border-b-0;
 }
 
+/* Obrazek produktu - tak jak w koszyku */
 .wc-block-components-order-summary-item__image {
-  @apply relative flex-shrink-0 w-16 h-16;
+  @apply relative flex-shrink-0 overflow-visible;
+  width: 72px !important;
+  min-width: 72px !important;
 }
 
-.wc-block-components-order-summary-item__image img {
-  @apply !w-16 !h-16 !min-w-[64px] !min-h-[64px] object-cover rounded-lg bg-[#F6F7FB] p-1;
+.wc-block-components-order-summary-item__image img,
+.wc-block-components-order-summary-item__image img[width],
+.wc-block-components-order-summary-item__image img[height] {
+  width: 72px !important;
+  height: 72px !important;
+  min-width: 72px !important;
+  min-height: 72px !important;
+  max-width: 72px !important;
+  max-height: 72px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  @apply object-cover rounded-lg bg-[#F6F7FB];
 }
 
+/* Badge ilości - na obrazku, lewy górny róg */
+.wc-block-components-order-summary-item__image
+  .wc-block-components-order-summary-item__quantity,
 .wc-block-components-order-summary-item__quantity {
-  @apply absolute -top-2 -right-2 w-5 h-5 bg-[#E67E22] text-white text-xs font-medium rounded-full flex items-center justify-center;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: #637381 !important;
+  color: #fff !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Nazwa produktu w podsumowaniu */
+/* Opis produktu */
+.wc-block-components-order-summary-item__description {
+  @apply flex-1 min-w-0;
+}
+
+/* Nazwa produktu - czytelna, min 16px */
 .wc-block-components-order-summary-item .wc-block-components-product-name {
-  @apply text-base font-medium text-dark block mb-1;
+  @apply !text-base !font-semibold !text-dark !block !mb-2 !leading-snug !no-underline !mt-0;
 }
 
-/* Cena produktu w podsumowaniu */
+/* Cena jednostkowa - min 16px */
 .wc-block-components-order-summary-item__individual-prices {
-  @apply text-sm text-dark-3;
+  @apply !text-base !text-dark-4 !block !mb-1;
 }
 
 .wc-block-components-order-summary-item__individual-prices del {
-  @apply text-dark-4 mr-2;
+  @apply !text-dark-4 !mr-2;
 }
 
 .wc-block-components-order-summary-item__individual-prices ins {
-  @apply text-dark font-medium no-underline;
+  @apply !text-dark !font-medium !no-underline !bg-transparent;
 }
 
-.wc-block-components-order-summary-item__total-price {
-  @apply text-base font-semibold text-dark ml-auto;
-}
-
-/* Ukryj opis w podsumowaniu */
+/* Opis/metadane produktu */
 .wc-block-components-order-summary-item .wc-block-components-product-metadata {
-  @apply hidden;
+  @apply !block !mt-1.5;
+}
+
+.wc-block-components-order-summary-item
+  .wc-block-components-product-metadata__description {
+  @apply !text-base !text-dark-4 !leading-relaxed;
+}
+
+.wc-block-components-order-summary-item
+  .wc-block-components-product-metadata__description
+  p {
+  @apply !m-0;
+}
+
+/* Cena całkowita po prawej - min 16px */
+.wc-block-components-order-summary-item__total-price {
+  @apply !text-base !font-semibold !text-dark !flex-shrink-0 !ml-auto !self-start;
+}
+
+.wc-block-components-order-summary-item__total-price
+  .wc-block-components-product-price__value {
+  @apply !text-base !font-semibold !text-dark;
 }
 
 /* ============================================
    Totals (Sumy)
    ============================================ */
 
+.wc-block-components-totals-wrapper {
+  @apply px-4;
+}
+
 .wc-block-components-totals-item {
-  @apply flex justify-between items-center py-3;
+  @apply flex justify-between items-center py-2;
 }
 
 .wc-block-components-totals-item__label {
-  @apply text-base text-dark-3;
+  @apply text-sm text-dark-3;
 }
 
 .wc-block-components-totals-item__value {
-  @apply text-base font-medium text-dark;
+  @apply text-sm font-medium text-dark;
 }
 
 /* Suma całkowita */
 .wc-block-components-totals-footer-item {
-  @apply border-t border-gray-3 pt-4 mt-2;
+  @apply border-t border-gray-3 pt-3 mt-2 pb-4;
 }
 
 .wc-block-components-totals-footer-item
   .wc-block-components-totals-item__label {
-  @apply text-lg font-semibold text-dark;
+  @apply text-base font-semibold text-dark;
 }
 
 .wc-block-components-totals-footer-item .wc-block-components-totals-item__value,
 .wc-block-components-totals-footer-item-tax-value {
-  @apply text-xl font-semibold text-[#E67E22];
+  @apply text-lg font-semibold text-[#E67E22];
 }
 
 /* ============================================
@@ -353,8 +432,54 @@ button.wc-block-components-checkout-place-order-button {
     @apply text-lg;
   }
 
-  .wc-block-components-order-summary-item__image img {
-    @apply w-14 h-14;
+  /* Order Summary - mobile */
+  .wc-block-components-order-summary-item {
+    @apply gap-3 py-3;
+  }
+
+  .wc-block-components-order-summary-item__image {
+    width: 56px !important;
+    min-width: 56px !important;
+  }
+
+  .wc-block-components-order-summary-item__image img,
+  .wc-block-components-order-summary-item__image img[width],
+  .wc-block-components-order-summary-item__image img[height] {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    max-width: 56px !important;
+    max-height: 56px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .wc-block-components-order-summary-item__quantity {
+    top: -5px !important;
+    left: -5px !important;
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    font-size: 10px !important;
+  }
+
+  /* WCAG - min 16px nawet na mobile */
+  .wc-block-components-order-summary-item .wc-block-components-product-name {
+    @apply !text-base !leading-snug;
+  }
+
+  .wc-block-components-order-summary-item__individual-prices {
+    @apply !text-base;
+  }
+
+  .wc-block-components-order-summary-item
+    .wc-block-components-product-metadata__description {
+    @apply !text-base !line-clamp-2;
+  }
+
+  .wc-block-components-order-summary-item__total-price {
+    @apply !text-base;
   }
 
   .wc-block-components-checkout-place-order-button {
