@@ -666,3 +666,21 @@ ul.products li.product .onsale,
 .wp-block-woocommerce-empty-cart-block .is-style-dots {
   @apply opacity-0 py-10 lg:py-20;
 }
+
+/* ============================================
+   Minimalistyczny footer na stronie koszyka
+   Ukryj sekcje "Konto" i "Menu", zostaw kontakt i płatności
+   ============================================ */
+
+body.woocommerce-cart
+  footer
+  > div:first-child
+  > div:first-child
+  > div:nth-child(2),
+body.woocommerce-cart
+  footer
+  > div:first-child
+  > div:first-child
+  > div:nth-child(3) {
+  @apply !hidden;
+}

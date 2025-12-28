@@ -494,3 +494,21 @@ button.wc-block-components-checkout-place-order-button {
 .woocommerce-checkout .entry-header {
   @apply max-w-[1170px] mx-auto px-4 sm:px-7.5 xl:px-0 pt-8;
 }
+
+/* ============================================
+   Minimalistyczny footer na checkout
+   Ukryj sekcje "Konto" i "Menu", zostaw kontakt i płatności
+   ============================================ */
+
+body.woocommerce-checkout
+  footer
+  > div:first-child
+  > div:first-child
+  > div:nth-child(2),
+body.woocommerce-checkout
+  footer
+  > div:first-child
+  > div:first-child
+  > div:nth-child(3) {
+  @apply !hidden;
+}
