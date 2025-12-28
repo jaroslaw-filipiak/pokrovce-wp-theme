@@ -10,6 +10,13 @@
    Checkout - Container & Layout
    ============================================ */
 
+/* Ukrycie breadcrumbs i nagłówka na stronie zamówienia - focus na checkout */
+body.woocommerce-checkout .woocommerce-breadcrumb,
+body.woocommerce-checkout .page-header,
+body.woocommerce-checkout .entry-header {
+  @apply !hidden;
+}
+
 /* Kontener główny */
 .woocommerce-checkout .wp-block-woocommerce-checkout {
   @apply max-w-[1170px] mx-auto px-4 sm:px-7.5 xl:px-0 py-8 lg:py-12 xl:py-16;
@@ -136,7 +143,7 @@
 
 /* Tytuł podsumowania */
 .wc-block-components-checkout-order-summary__title {
-  @apply flex items-center justify-between py-4 cursor-pointer;
+  @apply flex items-center justify-between py-4 !px-4 cursor-pointer !mt-0;
 }
 
 .wc-block-components-checkout-order-summary__title-text {
