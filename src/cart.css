@@ -8,8 +8,90 @@
 
 /* cart */
 
+/* Usunięcie pustego miejsca na górze strony koszyka */
+body.woocommerce-cart .site-main {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
 body.woocommerce-cart .wp-block-woocommerce-cart {
-  @apply container mx-auto py-5 lg:py-12 xl:py-16;
+  max-width: 1170px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 20px 16px !important;
+}
+
+@media (min-width: 1024px) {
+  body.woocommerce-cart .wp-block-woocommerce-cart {
+    padding: 48px 30px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  body.woocommerce-cart .wp-block-woocommerce-cart {
+    padding: 64px 0 !important;
+  }
+}
+
+/* Ukrycie breadcrumbs i innych pustych elementów */
+body.woocommerce-cart .woocommerce-breadcrumb:empty,
+body.woocommerce-cart .page-header:empty {
+  display: none !important;
+}
+
+/* Layout główny koszyka - dwie kolumny na desktop */
+.wc-block-cart {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 32px !important;
+}
+
+@media (min-width: 1024px) {
+  .wc-block-cart {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 40px !important;
+  }
+}
+
+/* Kolumna z produktami */
+.wc-block-cart__main {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+/* Kolumna z podsumowaniem */
+.wc-block-cart__sidebar {
+  width: 100% !important;
+}
+
+@media (min-width: 1024px) {
+  .wc-block-cart__sidebar {
+    width: 380px !important;
+    flex-shrink: 0 !important;
+    position: sticky !important;
+    top: 100px !important;
+  }
+}
+
+/* Tabela koszyka - reset */
+.wc-block-cart-items {
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  width: 100% !important;
+}
+
+.wc-block-cart-items thead {
+  display: none !important;
+}
+
+.wc-block-cart-items tbody {
+  display: block !important;
+}
+
+/* Nagłówek sekcji produktów */
+.wc-block-cart__main-header {
+  display: none !important;
 }
 
 /* Cart page - spójność z resztą strony */
@@ -243,42 +325,150 @@ body.woocommerce-cart .wp-block-woocommerce-cart {
   @apply font-euclid-circular-a;
 }
 
-/* Zdjęcie produktu - większe */
+/* Reset dla tabeli koszyka */
+.wc-block-cart-items,
+.wc-block-cart-items__row {
+  width: 100% !important;
+}
+
+/* Wiersz produktu w koszyku */
+.wc-block-cart-items__row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  padding: 20px 0 !important;
+  border-bottom: 1px solid #e9eff4 !important;
+}
+
+/* Zdjęcie produktu */
 .wc-block-cart-items__row .wc-block-cart-item__image,
 .wc-block-cart-items__row td.wc-block-cart-item__image {
-  @apply w-32 lg:w-40;
+  width: 100px !important;
+  flex-shrink: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+@media (min-width: 768px) {
+  .wc-block-cart-items__row .wc-block-cart-item__image,
+  .wc-block-cart-items__row td.wc-block-cart-item__image {
+    width: 120px !important;
+  }
 }
 
 .wc-block-cart-items__row .wc-block-cart-item__image a {
-  @apply block;
+  display: block !important;
 }
 
 .wc-block-cart-items__row .wc-block-cart-item__image img {
-  @apply w-28 h-28 lg:w-36 lg:h-36 object-cover rounded-lg bg-[#F6F7FB] p-2 !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+  background-color: #f6f7fb !important;
+  padding: 0px !important;
+}
+
+/* Kolumna z danymi produktu */
+.wc-block-cart-items__row .wc-block-cart-item__product,
+.wc-block-cart-items__row td.wc-block-cart-item__product {
+  flex: 1 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  text-align: left !important;
+}
+
+/* Wrapper wewnętrzny */
+.wc-block-cart-items__row .wc-block-cart-item__wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 4px !important;
+}
+
+/* Kolumna z ceną całkowitą */
+.wc-block-cart-items__row .wc-block-cart-item__total,
+.wc-block-cart-items__row td.wc-block-cart-item__total {
+  padding: 0 !important;
+  border: none !important;
+  text-align: right !important;
+}
+
+@media (max-width: 767px) {
+  .wc-block-cart-items__row .wc-block-cart-item__total,
+  .wc-block-cart-items__row td.wc-block-cart-item__total {
+    display: none !important;
+  }
 }
 
 /* Ukryj opis i krótki opis w koszyku */
 .wc-block-cart-items__row .wc-block-components-product-metadata,
 .wc-block-cart-items__row .wc-block-components-product-metadata__description,
 .wc-block-cart-items__row .wc-block-components-product-details {
-  @apply !hidden;
+  display: none !important;
 }
 
-/* Nazwa produktu - większa */
+/* Badge oszczędzasz */
+.wc-block-cart-items__row .wc-block-components-sale-badge,
+.wc-block-cart-items__row .wc-block-components-product-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #22ad5c !important;
+  background-color: rgba(34, 173, 92, 0.1) !important;
+  padding: 4px 10px !important;
+  border-radius: 4px !important;
+  margin-bottom: 8px !important;
+  border: 1px solid #22ad5c !important;
+}
+
+/* Nazwa produktu w koszyku - normalna wielkość, wyrównanie do lewej */
 .wc-block-cart-items__row .wc-block-components-product-name,
 .wc-block-cart-items__row a.wc-block-components-product-name {
-  @apply text-xl lg:text-2xl font-medium text-dark hover:text-[#E67E22] transition-colors no-underline !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: #1c2434 !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  display: block !important;
+  margin-bottom: 8px !important;
 }
 
-/* Cena produktu */
+.wc-block-cart-items__row a.wc-block-components-product-name:hover {
+  color: #e67e22 !important;
+}
+
+/* Cena produktu w koszyku */
+.wc-block-cart-items__row .wc-block-cart-item__prices,
 .wc-block-cart-items__row .wc-block-components-product-price {
-  @apply text-lg font-medium text-dark;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  text-align: left !important;
+  margin-bottom: 8px !important;
 }
 
+.wc-block-cart-items__row .wc-block-components-product-price__value,
 .wc-block-cart-items__row
-  .wc-block-components-product-price
-  .wc-block-components-product-price__value {
-  @apply text-dark;
+  .wc-block-components-product-price__value.is-discounted {
+  color: #1c2434 !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  background: none !important;
+}
+
+.wc-block-cart-items__row .wc-block-components-product-price__regular {
+  color: #6c7a93 !important;
+  text-decoration: line-through !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
 }
 
 /* Ilość i usuń - w jednej linii */
