@@ -66,4 +66,32 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
+  // Product FAQ Accordion
+  document
+    .querySelectorAll('.product-faq-section .faq-item')
+    .forEach(function (item) {
+      var header = item.querySelector('h4');
+      if (!header) return;
+
+      header.addEventListener('click', function () {
+        var isOpen = item.classList.contains('is-open');
+
+        // Close all other items
+        document
+          .querySelectorAll('.product-faq-section .faq-item')
+          .forEach(function (otherItem) {
+            if (otherItem !== item) {
+              otherItem.classList.remove('is-open');
+            }
+          });
+
+        // Toggle current item
+        if (isOpen) {
+          item.classList.remove('is-open');
+        } else {
+          item.classList.add('is-open');
+        }
+      });
+    });
 });

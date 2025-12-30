@@ -292,3 +292,60 @@ function pokrovce_set_phone_required_option() {
 	}
 }
 add_action( 'init', 'pokrovce_set_phone_required_option' );
+
+/**
+ * Customize WooCommerce product tabs.
+ * - Keep description (with custom template)
+ * - Add dimensions tab
+ * - Add FAQ tab
+ * - Remove additional_information
+ */
+function pokrovce_product_tabs( $tabs ) {
+	// Remove additional information tab
+	unset( $tabs['additional_information'] );
+	
+	// Override description callback to use our template
+	if ( isset( $tabs['description'] ) ) {
+		$tabs['description']['callback'] = 'pokrovce_description_tab_content';
+		$tabs['description']['title']    = __( 'Opis', 'pokrovce' );
+		$tabs['description']['priority'] = 10;
+	}
+	
+	// Add dimensions tab
+	$tabs['dimensions'] = array(
+		'title'    => __( 'Wymiary', 'pokrovce' ),
+		'priority' => 20,
+		'callback' => 'pokrovce_dimensions_tab_content',
+	);
+	
+	// Add FAQ tab
+	$tabs['faq'] = array(
+		'title'    => __( 'FAQ', 'pokrovce' ),
+		'priority' => 30,
+		'callback' => 'pokrovce_faq_tab_content',
+	);
+	
+	return $tabs;
+}
+add_filter( 'woocommerce_product_tabs', 'pokrovce_product_tabs', 98 );
+
+/**
+ * Description tab content.
+ */
+function pokrovce_description_tab_content() {
+	wc_get_template( 'single-product/tabs/description.php' );
+}
+
+/**
+ * Dimensions tab content.
+ */
+function pokrovce_dimensions_tab_content() {
+	wc_get_template( 'single-product/tabs/tab-dimensions.php' );
+}
+
+/**
+ * FAQ tab content.
+ */
+function pokrovce_faq_tab_content() {
+	wc_get_template( 'single-product/tabs/tab-faq.php' );
+}

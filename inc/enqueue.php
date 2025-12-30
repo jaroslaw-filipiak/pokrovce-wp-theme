@@ -67,6 +67,7 @@ function pokrovce_scripts() {
 	 * Single Product - load only on single product pages
 	 */
 	if ( function_exists( 'is_product' ) && is_product() ) {
+		wp_enqueue_style( 'pokrovce-single-product', get_template_directory_uri() . '/dist/assets/single-product.css', array( 'pokrovce-global' ), _S_VERSION );
 		wp_enqueue_script( 'pokrovce-woocommerce-single', get_template_directory_uri() . '/dist/assets/woocommerce-single.js', array(), _S_VERSION, true );
 	}
 }

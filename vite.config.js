@@ -11,6 +11,7 @@ export default defineConfig({
         about: 'src/about.js',
         contact: 'src/contact.js',
         myaccount: 'src/myaccount.js',
+        'single-product': 'src/single-product.css',
         'woocommerce-single': 'src/js/woocommerce-single.js',
       },
       output: {
