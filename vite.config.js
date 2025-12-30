@@ -11,7 +11,7 @@ export default defineConfig({
         about: 'src/about.js',
         contact: 'src/contact.js',
         myaccount: 'src/myaccount.js',
-        // admin: 'src/admin.js',
+        'woocommerce-single': 'src/js/woocommerce-single.js',
       },
       output: {
         entryFileNames: 'assets/[name].js',

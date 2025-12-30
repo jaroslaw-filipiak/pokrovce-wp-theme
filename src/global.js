@@ -13,7 +13,6 @@ window.Swiper = Swiper;
 // Import custom scripts
 import './js/swiper-init.js';
 import './js/countdown.js';
-import './js/woocommerce-single.js';
 
 // ============================================
 // Mobile Menu Toggle

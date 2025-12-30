@@ -43,20 +43,27 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Custom Zoom Button - trigger WooCommerce lightbox
+  // Zoom Button - trigger WooCommerce PhotoSwipe lightbox
   document.querySelectorAll('.gallery__Image').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      // Find the main gallery image link and trigger click
-      const galleryImage = document.querySelector('.woocommerce-product-gallery__image a');
-      if (galleryImage) {
-        galleryImage.click();
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+
+      // Trigger click on the gallery trigger button (WooCommerce default)
+      var trigger = document.querySelector(
+        '.woocommerce-product-gallery__trigger'
+      );
+      if (trigger) {
+        trigger.click();
+        return;
+      }
+
+      // Or trigger click on the main image link
+      var imageLink = document.querySelector(
+        '.woocommerce-product-gallery__image a'
+      );
+      if (imageLink) {
+        imageLink.click();
       }
     });
   });
 });
-
-
-
-
-
-

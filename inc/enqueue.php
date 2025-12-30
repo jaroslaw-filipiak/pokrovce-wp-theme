@@ -62,5 +62,12 @@ function pokrovce_scripts() {
 		wp_enqueue_style( 'pokrovce-myaccount', get_template_directory_uri() . '/dist/assets/myaccount.css', array( 'pokrovce-global' ), _S_VERSION );
 		wp_enqueue_script( 'pokrovce-myaccount', get_template_directory_uri() . '/dist/assets/myaccount.js', array( 'pokrovce-global' ), _S_VERSION, true );
 	}
+
+	/**
+	 * Single Product - load only on single product pages
+	 */
+	if ( function_exists( 'is_product' ) && is_product() ) {
+		wp_enqueue_script( 'pokrovce-woocommerce-single', get_template_directory_uri() . '/dist/assets/woocommerce-single.js', array(), _S_VERSION, true );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'pokrovce_scripts' );
