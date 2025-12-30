@@ -5,7 +5,7 @@
  * @package pokrovce
  */
 ?>
-<section class="overflow-hidden pb-10 lg:pb-12.5 xl:pb-15 pt-45 lg:pt-30 bg-[#E5EAF4]">
+<section class="overflow-hidden pb-10 lg:pb-12.5 xl:pb-15 pt-30 bg-[#E5EAF4]">
     <div class="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
         <!-- Main H1 for SEO (visually hidden but accessible) -->
         <h1 class="sr-only">Pokrowce na krzesła skandynawskie - Pokrovce.pl</h1>

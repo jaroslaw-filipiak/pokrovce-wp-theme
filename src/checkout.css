@@ -365,6 +365,17 @@ span.optimized-checkout-element span,
   @apply flex items-start gap-4 py-4 border-b border-gray-3;
 }
 
+/* Desktop: flex column layout - obrazek + nazwa + cena obok siebie, opis ukryty */
+@media (min-width: 1024px) {
+  .wc-block-components-order-summary-item {
+    @apply flex-row items-start gap-3 py-3;
+  }
+
+  .wc-block-components-order-summary-item__description {
+    @apply flex flex-row items-start justify-between gap-3;
+  }
+}
+
 .wc-block-components-order-summary-item:last-child {
   @apply border-b-0;
 }
@@ -388,6 +399,34 @@ span.optimized-checkout-element span,
   margin: 0 !important;
   padding: 0 !important;
   @apply object-cover rounded-lg bg-[#F6F7FB];
+}
+
+/* Desktop: mniejszy obrazek */
+@media (min-width: 1024px) {
+  .wc-block-components-order-summary-item__image {
+    width: 48px !important;
+    min-width: 48px !important;
+  }
+
+  .wc-block-components-order-summary-item__image img,
+  .wc-block-components-order-summary-item__image img[width],
+  .wc-block-components-order-summary-item__image img[height] {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    max-width: 48px !important;
+    max-height: 48px !important;
+  }
+
+  .wc-block-components-order-summary-item__quantity {
+    top: -4px !important;
+    left: -4px !important;
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    font-size: 10px !important;
+  }
 }
 
 /* Badge ilości - na obrazku, lewy górny róg */
@@ -422,12 +461,12 @@ span.optimized-checkout-element span,
 
 /* Nazwa produktu - czytelna, min 16px */
 .wc-block-components-order-summary-item .wc-block-components-product-name {
-  @apply !text-base !font-semibold !text-dark !block !mb-2 !leading-snug !no-underline !mt-0;
+  @apply !text-base !font-semibold !text-dark !block !mb-2 !leading-snug !no-underline !mt-0 lg:!mb-0 lg:!text-sm lg:!font-medium;
 }
 
-/* Cena jednostkowa - min 16px */
+/* Cena jednostkowa - min 16px, ukryta na desktop */
 .wc-block-components-order-summary-item__individual-prices {
-  @apply !text-base !text-dark-4 !block !mb-1;
+  @apply !text-base !text-dark-4 !block !mb-1 lg:!hidden;
 }
 
 .wc-block-components-order-summary-item__individual-prices del {
@@ -438,9 +477,9 @@ span.optimized-checkout-element span,
   @apply !text-dark !font-medium !no-underline !bg-transparent;
 }
 
-/* Opis/metadane produktu */
+/* Opis/metadane produktu - ukryty na desktop */
 .wc-block-components-order-summary-item .wc-block-components-product-metadata {
-  @apply !block !mt-1.5;
+  @apply !block !mt-1.5 lg:!hidden;
 }
 
 .wc-block-components-order-summary-item
@@ -461,7 +500,7 @@ span.optimized-checkout-element span,
 
 .wc-block-components-order-summary-item__total-price
   .wc-block-components-product-price__value {
-  @apply !text-base !font-semibold !text-dark;
+  @apply !text-base !font-semibold !text-dark lg:!text-sm;
 }
 
 /* ============================================
@@ -703,4 +742,12 @@ body.woocommerce-checkout
   > div:first-child
   > div:nth-child(3) {
   @apply !hidden;
+}
+
+/* ============================================
+  Sidebar
+   ============================================ */
+
+.wc-block-components-sidebar {
+  @apply !pl-0;
 }

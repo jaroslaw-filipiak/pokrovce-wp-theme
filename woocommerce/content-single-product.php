@@ -33,7 +33,7 @@ if ( post_password_required() ) {
 ?>
 
 <!-- Product Section -->
-<section class="relative pt-5 pb-20 overflow-hidden lg:pt-5 xl:pt-5 content-single-product">
+<section class="relative pt-12  overflow-hidden lg:pt-5 xl:pt-5 content-single-product">
     <div class="w-full px-4 mx-auto max-w-7xl sm:px-6 xl:px-0">
         <div id="product-<?php the_ID(); ?>"
             <?php wc_product_class( 'flex flex-col lg:flex-row gap-7.5 xl:gap-16', $product ); ?>>

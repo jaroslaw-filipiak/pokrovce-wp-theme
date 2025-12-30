@@ -23,7 +23,7 @@
     <!-- fav + manifest -->
     <link rel="icon" type="image/png" href="<?php echo get_theme_file_uri() ?>/public/favicon-96x96.png"
         sizes="96x96" />
-    sizes="96x96" />
+
     <link rel="icon" type="image/svg+xml" href="<?php echo get_theme_file_uri() ?>/public/favicon.svg" />
     <link rel="shortcut icon" href="<?php echo get_theme_file_uri() ?>/public/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180"
@@ -216,7 +216,8 @@
                             </div>
 
                             <!-- Hamburger Toggle BTN -->
-                            <button id="navToggle" aria-label="Menu" class="hamburger xl:hidden flex flex-col justify-center items-center w-10 h-10 relative z-[102]">
+                            <button id="navToggle" aria-label="Menu"
+                                class="hamburger xl:hidden flex flex-col justify-center items-center w-10 h-10 relative z-[102]">
                                 <span class="hamburger-line hamburger-line-1"></span>
                                 <span class="hamburger-line hamburger-line-2"></span>
                                 <span class="hamburger-line hamburger-line-3"></span>
@@ -292,7 +293,8 @@
         <div id="mobileMenuOverlay" class="mobile-overlay fixed inset-0 z-[100] xl:hidden"></div>
 
         <!-- Mobile Menu Sidebar -->
-        <nav id="mobileMenu" class="fixed top-0 right-0 w-[300px] h-full bg-white z-[101] shadow-2xl transform translate-x-full transition-transform duration-300 ease-out xl:hidden overflow-y-auto">
+        <nav id="mobileMenu"
+            class="fixed top-0 right-0 w-[300px] h-full bg-white z-[101] shadow-2xl transform translate-x-full transition-transform duration-300 ease-out xl:hidden overflow-y-auto">
             <!-- Mobile Menu Header -->
             <div class="flex items-center justify-between p-5 border-b border-gray-3">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
